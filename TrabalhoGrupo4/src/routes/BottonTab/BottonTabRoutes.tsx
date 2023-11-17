@@ -25,6 +25,7 @@ export default function BottonTabRoutes() {
 		>
 			<Tab.Screen
 				options={{
+					tabBarShowLabel:false,
 					tabBarIcon: ({ color }) => (
 						<Image
 							resizeMode='contain'
@@ -38,6 +39,7 @@ export default function BottonTabRoutes() {
 			/>
 			<Tab.Screen
 				options={{
+					tabBarShowLabel:false,
 					tabBarIcon: ({ color }) => (
 						<Image
 							resizeMode='contain'
