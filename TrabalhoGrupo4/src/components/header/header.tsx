@@ -12,7 +12,7 @@ const Header = () => {
 
   const navigation = useNavigation(); 
 
-  const verificarLogin = () => {
+  const sair = () => {
      setLogado(false)
      navigation.navigate('login' as never);
   };
@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <View style={Style.containerheader}>
       <Image source={TeamHeroesLogo}  style={Style.imgHeader} />
-      <TouchableOpacity onPress={verificarLogin}>
+      <TouchableOpacity onPress={sair}>
         <Image source={Back}  style={Style.imgHeader} />
       </TouchableOpacity>
     </View>
