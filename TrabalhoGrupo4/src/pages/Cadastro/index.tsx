@@ -11,12 +11,12 @@ const Cadastro = () => {
   return (
     <View style={styles.viewContainer}>
       <View style={styles.viewContent}>
-        <Logo widthLogo={200} heightLogo={100}/>
+        <Logo widthLogo={300} heightLogo={150}/>
         <Input/>
         <Input/>
         <Input/>
         <Input/>
-        <Button/>
+        <Button text='Cadastrar' buttonWidth={200} buttonHeight={60} textFontSize={36}/>
         <Text style={styles.text}>Já possui uma conta? Entre!</Text>
       </View>
       <Footer/>

@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
         height: 'auto'
     },
     logoImagem: {
-
+        
     }
 })
