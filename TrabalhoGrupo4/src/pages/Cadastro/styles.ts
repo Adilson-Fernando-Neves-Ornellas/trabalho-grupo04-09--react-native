@@ -3,7 +3,8 @@ import fonts from '../../styles/theme/fonts';
 
 const styles = StyleSheet.create({
   viewContainer: {
-    flex: 1, 
+    flex: 1,
+
   },
   viewContent: {
     flexDirection: 'column',
@@ -12,6 +13,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 18,
+    fontFamily: fonts.texto
   }
 });
 
