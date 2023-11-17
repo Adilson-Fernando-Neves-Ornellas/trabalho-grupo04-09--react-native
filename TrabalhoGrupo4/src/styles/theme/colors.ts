@@ -1,8 +1,6 @@
 export default {
-    primary: '#FFBB0B',
-    primaryLight: '#FFDF8E',
-    primaryDark: '#CB9303',
-    secondary: '#63321C',
-    secondaryLight: '#735243',
-    secondaryDark: '#170F0C',
+    background: '#9C1304',
+    bluePrimary: '#0A27BF',
+    yellowPrimary: '#D4BF00',
+    blackPrimary: '#1E1E1E',
    };

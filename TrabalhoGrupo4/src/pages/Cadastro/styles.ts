@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 18,
-    fontFamily: fonts.primary
   }
 });
 

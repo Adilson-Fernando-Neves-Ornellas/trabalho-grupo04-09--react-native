@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/bangers": "^0.2.3",
     "@expo-google-fonts/oswald": "^0.2.3",
     "@expo/webpack-config": "^19.0.0",
     "@react-navigation/native": "^6.1.9",

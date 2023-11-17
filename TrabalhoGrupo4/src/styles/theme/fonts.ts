@@ -1,4 +1,5 @@
 export default {
-    primary: 'Oswald_600SemiBold',
-    secondary: 'Arial',
+    logo: 'Oswald_600SemiBold',
+    texto: 'Bangers_400Regular',
+    base: 'Arial',
    };
