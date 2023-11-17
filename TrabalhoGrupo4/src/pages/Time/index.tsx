@@ -1,11 +1,15 @@
-import { View, Text } from "react-native";
+import { ScrollView, Text } from 'react-native'; 
 import styles from "./styles";
+import Header from '../../components/header/header';
+import CardsTime from '../../components/CardsTime/CardsTime';
 
 const Time = () => {
   return (
-    <View>
-      <Text style={styles.text}>PAGE TIME</Text>
-    </View>
+    <ScrollView style={styles.containerHome}>
+      <Header />
+      <Text style={styles.tituloPageHome}>Time Atual</Text>
+      <CardsTime/>
+    </ScrollView>
   );
 };
 
