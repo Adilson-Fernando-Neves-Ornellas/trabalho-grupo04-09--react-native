@@ -1,11 +1,12 @@
 import { View, Text, Image } from 'react-native'; 
 import style from './styles';
+import { Logo } from '../../components/LogoModel';
 
 const Login = () => {
 
   return (
     <View>
-      <Text style={style.text}>PAGE LOGIN</Text>
+      <Logo size={30} title='Teste fonte'/>
     </View>
   );
 };
