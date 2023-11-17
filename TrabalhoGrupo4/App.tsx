@@ -16,10 +16,10 @@ export default function App() {
   }
 
   return (
-    <AuthProvider>
-      <Routes/>
-    </AuthProvider>
-    // <Cadastro/>
+    // <AuthProvider>
+    //   <Routes/>
+    // </AuthProvider>
+    <Cadastro/>
   );
 }
 

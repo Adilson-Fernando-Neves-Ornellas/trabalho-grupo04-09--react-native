@@ -4,14 +4,14 @@ import styles from './styles';
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer';
-import Logo from '../../assets/Images/TeamHeroesLogo.png'
+import { Logo } from '../../components/LogoSimples'
 
 const Cadastro = () => {
 
   return (
     <View style={styles.viewContainer}>
       <View style={styles.viewContent}>
-        <Image source={Logo}   />
+        <Logo widthLogo={200} heightLogo={100}/>
         <Input/>
         <Input/>
         <Input/>
