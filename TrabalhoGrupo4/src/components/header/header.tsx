@@ -5,7 +5,6 @@ import TeamHeroesLogo from "../../assets/Images/TeamHeroesLogo.png";
 import { AuthContext } from "../../Context/Context";
 import Back from "../../assets/Images/Back.png";
 import { useNavigation } from "@react-navigation/native";
-// import { Logo } from "../LogoModel";
 
 const Header = () => {
   const { setLogado } = useContext(AuthContext);
@@ -19,10 +18,9 @@ const Header = () => {
 
   return (
     <View style={Style.containerheader}>
-      {/* <Logo sizeTxt={14} sizeBg={100} title="TEAMHEROES" /> */}
       <Image source={TeamHeroesLogo} style={Style.imgHeader} />
       <TouchableOpacity onPress={sair}>
-        <Image source={Back} style={{height:50}} />
+        <Image source={Back} style={Style.imgHeader} />
       </TouchableOpacity>
     </View>
   );
