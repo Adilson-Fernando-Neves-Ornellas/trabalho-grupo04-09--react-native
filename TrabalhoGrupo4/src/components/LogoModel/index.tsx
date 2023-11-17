@@ -12,16 +12,19 @@ import { styles } from "./styles";
 
 interface LogoProps extends TouchableOpacityProps {
   title: string;
-  size: number;
+  sizeTxt: number;
+  sizeBg: any;
 }
 
-export const Logo = ({ title, size, ...rest }: LogoProps) => {
+export const Logo = ({ sizeBg, title, sizeTxt, ...rest }: LogoProps) => {
   return (
-    <TouchableOpacity {...rest}>
-      <Image source={logoFundo} style={styles.img} />
-      <View style={styles.logoContainer}>
-        <Text style={[styles.logoText, { fontSize: size }]}>{title}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.img}>
+      <TouchableOpacity {...rest}>
+        <Image source={logoFundo} style={[styles.img, {height:sizeBg}]} />
+        <View style={styles.logoContainer}>
+          <Text style={[styles.logoText, { fontSize: sizeTxt }]}>{title}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };
