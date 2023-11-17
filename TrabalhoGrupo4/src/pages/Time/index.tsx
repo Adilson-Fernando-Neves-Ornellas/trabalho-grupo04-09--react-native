@@ -1,12 +1,12 @@
 
 import { View, Text } from 'react-native'; 
-import Style from './Style';
+import styles from './styles';
 
 const Time = () => {
 
   return (
     <View>
-      <Text style={Style.text}>PAGE TIME</Text>
+      <Text style={styles.text}>PAGE TIME</Text>
     </View>
   );
 };

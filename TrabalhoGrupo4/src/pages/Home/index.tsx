@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'; 
-import Style from './Style';
+import styles from './styles';
 
 const Home = () => {
 
   return (
     <View>
-      <Text style={Style.text}>PAGE HOME</Text>
+      <Text style={styles.text}>PAGE HOME</Text>
     </View>
   );
 };

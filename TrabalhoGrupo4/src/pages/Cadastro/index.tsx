@@ -1,12 +1,12 @@
 
 import { View, Text } from 'react-native'; 
-import Style from './Style';
+import styles from './styles';
 
 const Cadastro = () => {
 
   return (
     <View>
-      <Text style={Style.text}>PAGE CAGASTRO</Text>
+      <Text style={styles.text}>PAGE CAGASTRO</Text>
     </View>
   );
 };

@@ -1,10 +1,10 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from '../pages/login/Login';
-import Cadastro from '../pages/cadastro/Cadastro';
-import Home from '../pages/home/Home';
-import Time from '../pages/Time/Time';
+import Login from '../pages/Login';
+import Cadastro from '../pages/Cadastro';
+import Home from '../pages/Home';
+import Time from '../pages/Time';
 
 export default function Routes() {
 

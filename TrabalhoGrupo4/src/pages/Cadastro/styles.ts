@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 18,
   }
 });
 
-export default Styles;
+export default styles;
