@@ -1,14 +1,16 @@
-import { View, Text } from 'react-native'; 
+import { ScrollView, Text } from 'react-native'; 
 import styles from './styles';
 import Header from '../../components/header/header';
+import CardHerois from '../../components/CardsHerois/CardsHerois';
 
 const Home = () => {
 
   return (
-    <View>
+    <ScrollView style={styles.containerHome}>
       <Header />
-      <Text style={styles.text}>PAGE HOME</Text>
-    </View>
+      <Text style={styles.tituloPageHome}>Monte seu Time</Text>
+      <CardHerois/>
+    </ScrollView>
   );
 };
 
