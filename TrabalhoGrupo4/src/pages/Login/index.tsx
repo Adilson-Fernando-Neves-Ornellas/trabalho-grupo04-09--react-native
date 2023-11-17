@@ -1,6 +1,7 @@
 import { View, Text, Button } from 'react-native'; 
 import style from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { Logo } from '../../components/LogoModel';
 
 const Login = () => {
   const navigation = useNavigation(); 
