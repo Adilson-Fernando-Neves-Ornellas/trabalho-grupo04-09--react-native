@@ -9,17 +9,16 @@ export const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: "center",
     alignItems: "center",
+    resizeMode:'contain',
   },
   img: {
-    flexGrow: 1,
-    width: "100%",
-    height: 200,
+    width:140,
     alignItems: "center",
     justifyContent: "center",
+    resizeMode:'contain'
   },
   logoText: {
     color: "#D4BF00",
-    fontFamily: "Oswald-SemiBold",
     fontWeight: "bold",
     textAlign: "center",
   },
