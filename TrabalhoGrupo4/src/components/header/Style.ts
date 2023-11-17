@@ -13,6 +13,10 @@ const Styles = StyleSheet.create({
     gap:-100,
     resizeMode:'contain'
   },
+  imgHeader:{
+    width: 100,
+    height: 50
+  }
 });
 
 export default Styles;
