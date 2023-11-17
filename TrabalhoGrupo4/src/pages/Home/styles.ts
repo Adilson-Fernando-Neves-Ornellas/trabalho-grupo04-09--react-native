@@ -1,9 +1,17 @@
 import { StyleSheet } from 'react-native';
 
+
 const styles = StyleSheet.create({
-  text: {
+  containerHome:{
+    flex: 1,
+    backgroundColor:"#9C1304"
+  },
+  tituloPageHome: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 24,
+    color: "#D4BF00",
+    fontFamily: "Coolvetica",
+    marginTop: 20
   }
 });
 
