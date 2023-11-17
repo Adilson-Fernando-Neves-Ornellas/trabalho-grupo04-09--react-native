@@ -1,16 +1,17 @@
 
-import { View, Text } from 'react-native'; 
+import { View, Text, Image } from 'react-native'; 
 import styles from './styles';
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer';
+import Logo from '../../assets/Images/TeamHeroesLogo.png'
 
 const Cadastro = () => {
 
   return (
     <View style={styles.viewContainer}>
-      <View>
-        {/* <Logo/> */}
+      <View style={styles.viewContent}>
+        <Image source={Logo}   />
         <Input/>
         <Input/>
         <Input/>
