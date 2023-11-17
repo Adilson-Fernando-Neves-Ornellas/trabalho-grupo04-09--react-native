@@ -1,6 +1,7 @@
 import { View, Text, Image } from 'react-native'; 
 import style from './styles';
 
+
 const Login = () => {
 
   return (
