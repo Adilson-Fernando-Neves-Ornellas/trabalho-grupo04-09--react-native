@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, Alert, TextInput, Button} from 'react-native'; 
+import { View, Text, Image, ScrollView, Alert, TextInput, Button, TouchableOpacity} from 'react-native'; 
 import React, {useState } from 'react';
 import styles from './styles';
 // import { Form } from '../../components/InputList'
@@ -17,12 +17,16 @@ const Cadastro = () => {
   const [confirmaSenha, setConfirmaSenha] = useState('');
   const navigation = useNavigation();
 
-  const adicionarNovo = async() => {
+  const adicionarNovo = async(e: any) => {
+    e.preventDefault()
     if(nome !== "" && email !== "" && senha !== ""  && confirmaSenha === senha){
-      const response = await api.post("/herois");
       Alert.alert("cadastro efetuado com sucesso, retornando a pagina de login")
-      navigation.navigate('login' as never);
       limpar();
+      try {
+        const response = await api.post("/usuarios",{nome, email, senha});
+      } catch (error) {
+        navigation.navigate('login' as never); 
+      }
     }else{
       Alert.alert("Dados Invalidos")
     }
@@ -40,7 +44,6 @@ const Cadastro = () => {
       <ScrollView accessibilityLabel='Rolagem' >
         <View style={styles.viewContent}>
             <Image source={LogoTeamHero} style={styles.logo} />
-
 
             {/* <Form
               inputs={[
@@ -68,6 +71,7 @@ const Cadastro = () => {
             />
             <Button text='Cadastrar' buttonWidth={200} buttonHeight={60} textFontSize={36} onPress={adicionarNovo}> */}
 
+
           <TextInput
               style={styles.input}
               value={nome}
@@ -94,7 +98,10 @@ const Cadastro = () => {
               placeholder="Confirma senha"
               secureTextEntry
             />
-            <Button color={"#8B0000"}  title="Cadastrar" onPress={adicionarNovo} />
+            <TouchableOpacity style={styles.button} onPress={adicionarNovo} >
+              <Text style={styles.textButton}>Cadastrar</Text>
+            </TouchableOpacity>
+
 
             <Text style={styles.text}>Já possui uma conta? Entre!</Text>
           </View>
