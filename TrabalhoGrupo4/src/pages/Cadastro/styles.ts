@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   viewContent: {
+    paddingTop: 75,
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -16,6 +17,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.texto,
     color: colors.yellowPrimary,
+    paddingTop: 15
+  },
+  logo:{
+      paddingTop: 75,
+      width: 300, 
+      height: 150 
   }
 });
 
