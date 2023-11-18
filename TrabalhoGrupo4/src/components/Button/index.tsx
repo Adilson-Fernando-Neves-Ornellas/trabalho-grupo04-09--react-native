@@ -5,12 +5,12 @@ interface ButtonProps extends TouchableOpacityProps {
     buttonWidth?: any,
     buttonHeight?: any,
     textFontSize?: any
-  }
+}
 
 
 export const Button = ({text, buttonWidth, buttonHeight, textFontSize, ...rest}: ButtonProps) => {
     return(
-        <TouchableOpacity style={[styles.button, {width: buttonWidth, height: buttonHeight}]}>
+        <TouchableOpacity style={[styles.button, {width: buttonWidth, height: buttonHeight}]} {...rest}>
             <Text style={[styles.text, {fontSize: textFontSize}]}>{text}</Text>
         </TouchableOpacity>
     )

@@ -23,7 +23,15 @@ const styles = StyleSheet.create({
       paddingTop: 75,
       width: 300, 
       height: 150 
-  }
+  },
+  input: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor:"#fff"
+  },
 });
 
 export default styles;
