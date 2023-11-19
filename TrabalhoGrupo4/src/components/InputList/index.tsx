@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, View, ViewProps } from 'react-native'
+import { styles } from './styles';
 
 interface InputProps {
     placeholder: string,
@@ -8,16 +9,16 @@ interface InputProps {
     setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-interface FormProps extends ViewProps {
+interface InputListProps extends ViewProps {
     inputs: InputProps[]
 }
 
-export const Form = ({inputs, ...rest}: FormProps) => {
+export const InputList = ({inputs, ...rest}: InputListProps) => {
     return (
         <View>
             {inputs.map((input) => {
                 return (
-                    <TextInput placeholder={input.placeholder} placeholderTextColor={input.placeholderColor ? input.placeholderColor : '#D4BF00CC'} onChangeText={(text) => input.setValue(text)} value={input.value}/>
+                    <TextInput style={styles.input} placeholder={input.placeholder} placeholderTextColor={input.placeholderColor ? input.placeholderColor : '#D4BF00CC'} onChangeText={(text) => input.setValue(text)} value={input.value}/>
                 )
             })}
         </View>

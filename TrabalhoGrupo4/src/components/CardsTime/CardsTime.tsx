@@ -30,7 +30,7 @@ const CardsTime = () => {
     <View style={Style.containerCards}>
       <FlatList
         style={Style.cardCarrosel}
-        numColumns={3}
+        numColumns={2}
         data={listaHerois}
         renderItem={({ item }) => (
           <View style={Style.div}>

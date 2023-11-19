@@ -5,7 +5,7 @@ import colors from '../../styles/theme/colors';
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.redBackground,
   },
   viewContent: {
     paddingTop: 75,
@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
       height: 150 
   },
   input: {
-    borderColor: "#1E1E1E",
+    borderColor: colors.blackPrimary,
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 15,
     padding: 10,
     borderRadius: 8,
-    backgroundColor:"#1E1E1E",
-    color: colors.yellowPrimary,
+    backgroundColor:colors.blackPrimary,
+    color: colors.yellowInput,
     fontFamily: fonts.texto,
     width:200,
   },

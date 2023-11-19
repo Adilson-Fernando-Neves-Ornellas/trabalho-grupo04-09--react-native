@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../styles/theme/colors";
 
 export const styles = StyleSheet.create({
   logoContainer: {
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
     resizeMode:'contain'
   },
   logoText: {
-    color: "#D4BF00",
+    color: colors.yellowPrimary,
     fontWeight: "bold",
     textAlign: "center",
   },

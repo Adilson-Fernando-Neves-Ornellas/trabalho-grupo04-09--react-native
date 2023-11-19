@@ -2,6 +2,7 @@ import { FlatList, View, Image, Text, Button } from "react-native";
 import Style from "./Style";
 import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
+import colors from "../../styles/theme/colors";
 
 interface Heroi {
   id: number;
@@ -40,11 +41,11 @@ const CardHerois = () => {
               style={{ width: 100, height: 150 }}
             />
             <View style={Style.infoCard}>
-              <Text style={Style.textcard}>{item.nome}</Text>
+              <Text style={[Style.textcard, {marginTop: 8}]}>{item.nome}</Text>
               <Text style={Style.textcard}> Força: {item.forca}</Text>
-              <Text style={Style.textcard}> Defesa: {item.defesa}</Text>
+              <Text style={[Style.textcard, {marginBottom: 24}]}> Defesa: {item.defesa}</Text>
               <Button
-                color={"#0A27BF"}
+                color={colors.bluePrimary}
                 title="Adicionar"
                 onPress={AdicionarHeroi}
               />

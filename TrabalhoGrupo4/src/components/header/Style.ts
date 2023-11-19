@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../styles/theme/colors';
 
 const Styles = StyleSheet.create({
   containerheader:{
-    backgroundColor:"#5F0900",
+    backgroundColor: colors.redHeader ,
     marginTop:30,
     maxHeight: 61,
     flex:1,

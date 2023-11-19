@@ -1,12 +1,13 @@
-import { View, Text, Image, ScrollView, Alert, TextInput, Button, TouchableOpacity} from 'react-native'; 
+import { View, Text, Image, ScrollView, Alert, TextInput, TouchableOpacity} from 'react-native'; 
 import React, {useState } from 'react';
 import styles from './styles';
 // import { Form } from '../../components/InputList'
-// import { Button } from '../../components/Button'
+import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer';
 import LogoTeamHero from '../../assets/Images/TeamHeroesLogo.png'
 import { useNavigation } from '@react-navigation/native';
 import { api } from '../../api/api';
+import { InputList } from '../../components/InputList';
 
 
 
@@ -45,7 +46,7 @@ const Cadastro = () => {
         <View style={styles.viewContent}>
             <Image source={LogoTeamHero} style={styles.logo} />
 
-            {/* <Form
+            <InputList
               inputs={[
                 {
                   placeholder: 'nome',
@@ -69,10 +70,7 @@ const Cadastro = () => {
                 },
               ]}
             />
-            <Button text='Cadastrar' buttonWidth={200} buttonHeight={60} textFontSize={36} onPress={adicionarNovo}> */}
-
-
-          <TextInput
+          {/* <TextInput
               style={styles.input}
               value={nome}
               onChangeText={(text) => setNome(text)}
@@ -97,13 +95,12 @@ const Cadastro = () => {
               onChangeText={(text) => setConfirmaSenha(text)}
               placeholder="Confirma senha"
               secureTextEntry
-            />
-            <TouchableOpacity style={styles.button} onPress={adicionarNovo} >
-              <Text style={styles.textButton}>Cadastrar</Text>
-            </TouchableOpacity>
+            /> */}
+
+            <Button text='Cadastrar' onPress={adicionarNovo} buttonHeight={60} buttonWidth={200} textFontSize={36} />
 
 
-            <Text style={styles.text}>Já possui uma conta? Entre!</Text>
+            <Text onPress={() => navigation.navigate('login' as never)} style={styles.text}>Já possui uma conta? Entre!</Text>
           </View>
       </ScrollView>
       <Footer/>
