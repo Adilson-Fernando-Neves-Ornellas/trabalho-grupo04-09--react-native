@@ -23,31 +23,6 @@ const styles = StyleSheet.create({
       paddingTop: 75,
       width: 300, 
       height: 150 
-  },
-  input: {
-    borderColor: colors.blackPrimary,
-    borderWidth: 1,
-    marginBottom: 15,
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor:colors.blackPrimary,
-    color: colors.yellowInput,
-    fontFamily: fonts.texto,
-    width:200,
-  },
-  button: {
-    backgroundColor: colors.bluePrimary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 16,
-    marginTop: 10,
-    width:200,
-    height:60,
-  },
-  textButton: {
-    color: colors.yellowPrimary,
-    fontFamily: fonts.texto,
-    fontSize: 36
   }
 });
 
