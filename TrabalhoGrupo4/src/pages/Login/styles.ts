@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import fonts from '../../styles/theme/fonts';
+import { StyleSheet } from "react-native";
+import fonts from "../../styles/theme/fonts";
 
 const styles = StyleSheet.create({
   text: {
@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "100%",
-    marginTop: 30,
     flexDirection: "column",
     justifyContent: "center",
     alignContent: "center",

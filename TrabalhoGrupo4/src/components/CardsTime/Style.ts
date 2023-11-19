@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
 
   },
   div:{
-    width: 155,
+    width: '50%',
     marginBottom: 15,
     // marginLeft: 15,
     display: "flex",

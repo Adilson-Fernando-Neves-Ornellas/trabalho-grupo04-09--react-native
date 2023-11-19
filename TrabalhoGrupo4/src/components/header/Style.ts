@@ -4,15 +4,11 @@ import colors from '../../styles/theme/colors';
 const Styles = StyleSheet.create({
   containerheader:{
     backgroundColor: colors.redHeader ,
-    marginTop:30,
-    maxHeight: 61,
-    flex:1,
+    maxHeight:61,
     alignItems: "flex-start",
     flexDirection: "row",
     justifyContent:"space-between",
     padding: 5,
-    gap:-100,
-    resizeMode:'contain'
   },
   imgHeader:{
     width: 100,

@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StatusBar } from "react-native";
 import style from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Logo } from "../../components/LogoModel";
@@ -18,6 +18,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar />
       <Text style={style.text}>PAGE LOGIN</Text>
       <Button color={"#8B0000"} title="Entrar" onPress={verificarLogin} />
       <Button color={"#8B0000"} title="Cadastrar" onPress={cadastrar} />
