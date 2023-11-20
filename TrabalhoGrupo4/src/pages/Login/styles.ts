@@ -9,12 +9,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: "column",
     alignContent: "center",
-    padding: 10,
   },
   logo: {
-    width: 210,
-    height: 140,
-    marginTop: 95,
+    width: 300,
+    height: 150,
+    marginTop: 75,
   },
   text: {
     textAlign: "center",
@@ -27,7 +26,6 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginBottom: 20, 
     width: '50%', 
-
   },
 
   buttonText: {
@@ -37,8 +35,13 @@ const styles = StyleSheet.create({
     fontFamily: '?',
   },
   signupText: {
-    color: '#d4bf00',
+    color: colors.yellowPrimary,
     marginTop: 10,
+  },
+  viewContent: {
+    paddingTop: 75,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   
   footer: {

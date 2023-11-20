@@ -24,7 +24,6 @@ const Login = () => {
       try {
         limpar()
         const response = await api.get('/usuarios', { params: {email: email, senha: senha}})
-        console.log(response.data.length)
         if( response.data && response.data.length > 0){
           await AsyncStorage.setItem('@user_id', response.data[0].id)
 
@@ -48,25 +47,22 @@ const Login = () => {
   };
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/Images/TeamHeroesLogo.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.text}>Input</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => console.log('Botão Entrar Pressionado')}>
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-      <Text style={styles.signupText}>Não possui uma conta? Cadastre-se</Text>
+      <StatusBar/>
+      <ScrollView>
+        <View style={styles.viewContent}>
+
+          <Image
+          source={LogoTeamHero}
+          style={[styles.logo , {marginTop: 10, marginBottom:50}]}
+          />
+          <InputList inputs={[{placeholder:'email',value: email , setValue: setEmail}, {placeholder: 'senha', value: senha , setValue: setSenha}]} limpar={limpar}/>
+          <Button text="Entrar" buttonHeight={60} buttonWidth={200} textFontSize={36} onPress={Logar}/>
+        
+          <Text style={styles.signupText} onPress={() => navigation.navigate ('cadastro' as never)}>Não possui uma conta? Cadastre-se</Text>
+        </View>
+      </ScrollView>
       
-      {/* Adicione o footer com a imagem aqui */}
-      <View style={styles.footer}>
-        <Image
-          source={require('../../assets/Images/HeroesFooter.jpg')}
-          style={styles.footerImage}
-        />
-      </View>
+    < Footer/>
     </View>
   );
 };
