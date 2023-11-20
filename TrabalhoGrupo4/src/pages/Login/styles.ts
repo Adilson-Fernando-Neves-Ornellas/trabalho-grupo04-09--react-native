@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: "column",
     alignContent: "center",
-    marginBottom: 10,
     padding: 10,
   },
   logo: {
