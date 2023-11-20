@@ -26,14 +26,14 @@ const Cadastro = () => {
       limpar();
       try {
         const response = await api.post("/usuarios", { nome, email, senha });
-        Alert.alert(
+        alert(
           "cadastro efetuado com sucesso, retornando a pagina de login"
         );
       } catch (error) {
         navigation.navigate("login" as never);
       }
     } else {
-      Alert.alert("Dados Invalidos");
+      alert("Dados Invalidos");
     }
   };
 
@@ -74,6 +74,7 @@ const Cadastro = () => {
                 setValue: setConfirmaSenha,
               },
             ]}
+            limpar={limpar}
           />
 
           <Button
