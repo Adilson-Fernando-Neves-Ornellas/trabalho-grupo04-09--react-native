@@ -1,27 +1,29 @@
-import { View, Text, Button, StatusBar } from "react-native";
-import style from "./styles";
-import { useNavigation } from "@react-navigation/native";
-import { Logo } from "../../components/LogoModel";
-import styles from "./styles";
-
+import React from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 const Login = () => {
-  const navigation = useNavigation();
-
-  const verificarLogin = () => {
-    navigation.navigate("home" as never);
-  };
-
-  const cadastrar = () => {
-    navigation.navigate("cadastro" as never);
-  };
-
   return (
     <View style={styles.container}>
-      <StatusBar />
-      <Text style={style.text}>PAGE LOGIN</Text>
-      <Button color={"#8B0000"} title="Entrar" onPress={verificarLogin} />
-      <Button color={"#8B0000"} title="Cadastrar" onPress={cadastrar} />
+      <Image
+        source={require('../../assets/Images/TeamHeroesLogo.png')}
+        style={styles.logo}
+      />
+      <Text style={styles.text}>Input</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => console.log('Botão Entrar Pressionado')}>
+        <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+      <Text style={styles.signupText}>Não possui uma conta? Cadastre-se</Text>
+      
+      {/* Adicione o footer com a imagem aqui */}
+      <View style={styles.footer}>
+        <Image
+          source={require('../../assets/Images/HeroesFooter.jpg')}
+          style={styles.footerImage}
+        />
+      </View>
     </View>
   );
 };
