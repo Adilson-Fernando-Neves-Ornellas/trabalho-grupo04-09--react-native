@@ -4,16 +4,12 @@ import fonts from "../../styles/theme/fonts";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9c1304',
-    justifyContent: 'center',    
+    backgroundColor: '#9c1304',    
     alignItems: 'center',
-    width: "100%",
     flexDirection: "column",
     alignContent: "center",
-    position: "absolute",
     marginBottom: 10,
     padding: 10,
-    marginTop: 49
   },
   logo: {
     width: 210,
