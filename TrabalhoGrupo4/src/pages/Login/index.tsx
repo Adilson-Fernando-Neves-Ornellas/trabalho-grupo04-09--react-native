@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, Image } from "react-native";
+import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity } from "react-native";
 import React, {useState, useContext} from 'react'
 import LogoTeamHero from '../../assets/Images/TeamHeroesLogo.png'
 import { useNavigation } from "@react-navigation/native";
@@ -48,45 +48,26 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.viewContainer}>
-      <StatusBar />
-      <ScrollView accessibilityLabel="Rolagem">
-        <View style={styles.viewContent}>
-          <Image source={LogoTeamHero} style={styles.logo} />
-
-          <InputList
-            inputs={[
-              {
-                placeholder: "email",
-                value: email,
-                setValue: setEmail,
-              },
-              {
-                placeholder: "senha",
-                value: senha,
-                setValue: setSenha,
-              }
-            ]}
-            limpar={limpar}
-          />
-
-          <Button
-            text='Entrar'
-            onPress={Logar}
-            buttonHeight={60}
-            buttonWidth={200}
-            textFontSize={36}
-          />
-
-          <Text
-            onPress={() => navigation.navigate("cadastro" as never)}
-            style={styles.text}
-          >
-            Não possui uma conta? Cadastre-se!
-          </Text>
-        </View>
-      </ScrollView>
-      <Footer />
+    <View style={styles.container}>
+      <Image
+        source={require('../../assets/Images/TeamHeroesLogo.png')}
+        style={styles.logo}
+      />
+      <Text style={styles.text}>Input</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => console.log('Botão Entrar Pressionado')}>
+        <Text style={styles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+      <Text style={styles.signupText}>Não possui uma conta? Cadastre-se</Text>
+      
+      {/* Adicione o footer com a imagem aqui */}
+      <View style={styles.footer}>
+        <Image
+          source={require('../../assets/Images/HeroesFooter.jpg')}
+          style={styles.footerImage}
+        />
+      </View>
     </View>
   );
 };
