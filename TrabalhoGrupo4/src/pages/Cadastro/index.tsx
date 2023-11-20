@@ -23,12 +23,12 @@ const Cadastro = () => {
       senha !== "" &&
       confirmaSenha === senha
     ) {
-      Alert.alert(
-        "cadastro efetuado com sucesso, retornando a pagina de login"
-      );
       limpar();
       try {
         const response = await api.post("/usuarios", { nome, email, senha });
+        Alert.alert(
+          "cadastro efetuado com sucesso, retornando a pagina de login"
+        );
       } catch (error) {
         navigation.navigate("login" as never);
       }
