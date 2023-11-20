@@ -10,7 +10,8 @@ interface InputProps {
 }
 
 interface InputListProps extends ViewProps {
-    inputs: InputProps[]
+    inputs: InputProps[],
+    limpar: () => void
 }
 
 export const InputList = ({inputs, ...rest}: InputListProps) => {
