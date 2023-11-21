@@ -37,8 +37,22 @@ const CardHerois = () => {
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
       }
+      
+      let produtoJaExistente = false
 
-      await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+      for(var i = 0; i < timeHerois.data[0].herois.length; i++) {
+        if(timeHerois.data[0].herois[i].id === idHeroi){
+          alert("Não é possivel adicionar um heroi que ja esta está no time");
+          produtoJaExistente = true
+        }
+      }
+
+      if(produtoJaExistente === false){
+        alert("fazendo put");
+        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+      }else{
+        alert("não fix put nenhum");
+      }
 
     } else {
       console.log('Nenhum valor encontrado para @user_id');
@@ -54,9 +68,6 @@ const CardHerois = () => {
   
       if(conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined){
         await api.post("/teamHerois", { idUsuario: idUsuario, herois: []});
-      }else{
-        const heroisJaNoTime = conferindoSeExisteTimeParaEsseIdUsuario.data[0].herois
-        console.log(heroisJaNoTime)
       }
     }
   }
