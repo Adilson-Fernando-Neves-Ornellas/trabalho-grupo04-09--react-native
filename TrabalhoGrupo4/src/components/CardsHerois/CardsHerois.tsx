@@ -20,16 +20,18 @@ const CardHerois = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const AdicionarHeroi = async (idHeroi : number) => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+  const AdicionarHeroi = async (idHeroi: number) => {
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const timeHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+      const timeHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
 
-      const listaHeroisTime = timeHerois.data[0].herois
-      const idteamHerois = timeHerois.data[0].id
-      
+      const listaHeroisTime = timeHerois.data[0].herois;
+      const idteamHerois = timeHerois.data[0].id;
+
       const heroiResponse = await api.get(`/herois/${idHeroi}`);
       const heroi = heroiResponse.data;
 
@@ -37,40 +39,41 @@ const CardHerois = () => {
         id: idteamHerois,
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
-      }
-      
-      let heroiEncontrado = false
+      };
+
+      let heroiEncontrado = false;
 
       listaHeroisTime.forEach((heroi: Heroi) => {
-        if(heroi.id === idHeroi) {
-          alert("Esse herói já foi adicionado")
-          heroiEncontrado = true
+        if (heroi.id === idHeroi) {
+          alert("Esse herói já foi adicionado");
+          heroiEncontrado = true;
         }
-      })
+      });
 
-      if(heroiEncontrado === false) {
-        alert('Herói adicionado com sucesso!')
+      if (heroiEncontrado === false) {
+        alert("Herói adicionado com sucesso!");
         await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
       }
-
     } else {
-      console.log('Nenhum valor encontrado para @user_id');
+      console.log("Nenhum valor encontrado para @user_id");
     }
-  }
-  
+  };
+
   const adiconandoListaHeroisVaziaAoUsuarioNovo = async () => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
-  
-      if(conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined){
-        await api.post("/teamHerois", { idUsuario: idUsuario, herois: []});
+      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get(
+        "/teamHerois",
+        { params: { idUsuario: idUsuario } }
+      );
+
+      if (conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined) {
+        await api.post("/teamHerois", { idUsuario: idUsuario, herois: [] });
       }
     }
-  }
-  
+  };
 
   const getherois = () => {
     setTimeout(async () => {
@@ -79,13 +82,13 @@ const CardHerois = () => {
       setIsLoading(false);
     }, 3000);
   };
-  
+
   useFocusEffect(
     React.useCallback(() => {
       getherois();
       adiconandoListaHeroisVaziaAoUsuarioNovo();
     }, [])
-  )
+  );
 
   return (
     <View style={styles.containerCards}>

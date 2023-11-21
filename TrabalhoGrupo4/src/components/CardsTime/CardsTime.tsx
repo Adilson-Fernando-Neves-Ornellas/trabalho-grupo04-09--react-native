@@ -26,16 +26,16 @@ const CardsTime = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getherois = async () => {
-      const asyncId = await AsyncStorage.getItem("@user_id");
-      if (asyncId !== null) {
-        const idUsuario = JSON.parse(asyncId);
-        const responseListaHerois = await api.get("/teamHerois", {
-          params: { idUsuario: idUsuario },
-        });
-        const listaHerois = responseListaHerois.data[0].herois;
-        setListaHerois(listaHerois);
-      }
-      setIsLoading(false);
+    const asyncId = await AsyncStorage.getItem("@user_id");
+    if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+      const responseListaHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
+      const listaHerois = responseListaHerois.data[0].herois;
+      setListaHerois(listaHerois);
+    }
+    setIsLoading(false);
   };
 
   // useEffect(() => {

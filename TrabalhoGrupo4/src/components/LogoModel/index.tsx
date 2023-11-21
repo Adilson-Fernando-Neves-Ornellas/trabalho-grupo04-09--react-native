@@ -20,7 +20,7 @@ export const Logo = ({ sizeBg, title, sizeTxt, ...rest }: LogoProps) => {
   return (
     <View style={styles.img}>
       <TouchableOpacity {...rest}>
-        <Image source={logoFundo} style={[styles.img, {height:sizeBg}]} />
+        <Image source={logoFundo} style={[styles.img, { height: sizeBg }]} />
         <View style={styles.logoContainer}>
           <Text style={[styles.logoText, { fontSize: sizeTxt }]}>{title}</Text>
         </View>
