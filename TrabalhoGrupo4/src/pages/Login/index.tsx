@@ -25,7 +25,7 @@ const Login = () => {
         limpar()
         const response = await api.get('/usuarios', { params: {email: email, senha: senha}})
         if( response.data && response.data.length > 0){
-          await AsyncStorage.setItem('@user_id', response.data[0].id)
+          await AsyncStorage.setItem('@user_id', JSON.stringify(response.data[0].id))
 
           setLogado(true)
           navigation.navigate('home' as never);
