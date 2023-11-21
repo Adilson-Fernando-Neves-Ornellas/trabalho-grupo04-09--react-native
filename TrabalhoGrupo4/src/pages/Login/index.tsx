@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, StatusBar, ScrollView, Image } from "react-native";
 import React, {useState, useContext} from 'react'
 import LogoTeamHero from '../../assets/Images/TeamHeroesLogo.png'
 import { useNavigation } from "@react-navigation/native";
@@ -21,24 +21,18 @@ const Login = () => {
   const Logar = async (e: any) => {
     e.preventDefault();
     if( email !== "" && senha !== "" ) {
-      try {
-        limpar()
         const response = await api.get('/usuarios', { params: {email: email, senha: senha}})
-        if( response.data && response.data.length > 0){
-          await AsyncStorage.setItem('@user_id', JSON.stringify(response.data[0].id))
-
-          setLogado(true)
-          navigation.navigate('home' as never);
+          if(response.data[0] === undefined){
+            alert('Usuário ou Senha inválido!');
+          }else{
+            await AsyncStorage.setItem('@user_id', JSON.stringify(response.data[0].id))
+            setLogado(true)
+            navigation.navigate("home" as never);
+          }
         } else {
-          alert("Email ou Senha Inválido")
+          alert("Preencha todos os campos!")
         }
-        } catch (error) {
-          alert('Erro ao logar')
-      }
-    } else {
-      limpar()
-      alert("Preencha todos os campos!")
-    };
+    limpar()
   }
 
   const limpar = () => {

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import colors from "../../styles/theme/colors";
 import superGif from "../../assets/Images/heroload.gif";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface Heroi {
   id: number;
@@ -18,7 +19,10 @@ const CardHerois = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  function AdicionarHeroi() {}
+  const AdicionarHeroi = async () => {
+    await AsyncStorage.getItem('@user_id')
+    console.log(AsyncStorage.getItem('@user_id'))
+  }
 
   const getherois = () => {
     setTimeout(async () => {
