@@ -20,30 +20,47 @@ const CardHerois = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const AdicionarHeroi = async (idHeroi : number) => {
-    console.log(idHeroi)
     const asyncId =await AsyncStorage.getItem('@user_id')
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const responseListaHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
-      const listaHerois = responseListaHerois.data[0].herois
+      const timeHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
 
+      const listaHeroisTime = timeHerois.data[0].herois
+      const idteamHerois = timeHerois.data[0].id
+      
       const heroiResponse = await api.get(`/herois/${idHeroi}`);
       const heroi = heroiResponse.data;
-  
+
       const modeloAPi = {
+        id: idteamHerois,
         idUsuario: idUsuario,
-        herois: [...listaHerois, heroi],
+        herois: [...listaHeroisTime, heroi],
       }
 
-      const response = await api.post('/teamHerois', modeloAPi);
-      console.log('Resposta da API:', response.data);
+      await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+
     } else {
       console.log('Nenhum valor encontrado para @user_id');
     }
-
-    const response = await api.post("/teamHerois", );
   }
+  
+  const adiconandoListaHeroisVaziaAoUsuarioNovo = async () => {
+    const asyncId =await AsyncStorage.getItem('@user_id')
+    if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+
+      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+  
+      if(conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined){
+        await api.post("/teamHerois", { idUsuario: idUsuario, herois: []});
+      }else{
+        const heroisJaNoTime = conferindoSeExisteTimeParaEsseIdUsuario.data[0].herois
+        console.log(heroisJaNoTime)
+      }
+    }
+  }
+  
 
   const getherois = () => {
     setTimeout(async () => {
@@ -52,16 +69,17 @@ const CardHerois = () => {
       setIsLoading(false);
     }, 3000);
   };
-
+  
   useEffect(() => {
     getherois();
+    adiconandoListaHeroisVaziaAoUsuarioNovo();
   }, []);
 
   return (
     <View style={styles.containerCards}>
       {isLoading ? (
         <View>
-          <Text style={styles.textCard}>CARREGANDO...</Text>
+          <Text style={styles.textCard}> CARREGANDO...</Text>
           <Image style={{ maxWidth: "100%" }} source={superGif} />
         </View>
       ) : (
