@@ -57,21 +57,25 @@ const Cadastro = () => {
                 placeholder: "nome",
                 value: nome,
                 setValue: setNome,
+                id:1,
               },
               {
                 placeholder: "email",
                 value: email,
                 setValue: setEmail,
+                id:2,
               },
               {
                 placeholder: "senha",
                 value: senha,
                 setValue: setSenha,
+                id:3,
               },
               {
                 placeholder: "confirmar senha",
                 value: confirmaSenha,
                 setValue: setConfirmaSenha,
+                id:4,
               },
             ]}
             limpar={limpar}

@@ -5,6 +5,7 @@ import { api } from "../../api/api";
 import colors from "../../styles/theme/colors";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface Heroi {
   id: number;
@@ -19,16 +20,18 @@ const CardHerois = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const AdicionarHeroi = async (idHeroi : number) => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+  const AdicionarHeroi = async (idHeroi: number) => {
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const timeHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+      const timeHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
 
-      const listaHeroisTime = timeHerois.data[0].herois
-      const idteamHerois = timeHerois.data[0].id
-      
+      const listaHeroisTime = timeHerois.data[0].herois;
+      const idteamHerois = timeHerois.data[0].id;
+
       const heroiResponse = await api.get(`/herois/${idHeroi}`);
       const heroi = heroiResponse.data;
 
@@ -36,31 +39,41 @@ const CardHerois = () => {
         id: idteamHerois,
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
+      };
+
+      let heroiEncontrado = false;
+
+      listaHeroisTime.forEach((heroi: Heroi) => {
+        if (heroi.id === idHeroi) {
+          alert("Esse herói já foi adicionado");
+          heroiEncontrado = true;
+        }
+      });
+
+      if (heroiEncontrado === false) {
+        alert("Herói adicionado com sucesso!");
+        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
       }
-
-      await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
-
     } else {
-      console.log('Nenhum valor encontrado para @user_id');
+      console.log("Nenhum valor encontrado para @user_id");
     }
-  }
-  
+  };
+
   const adiconandoListaHeroisVaziaAoUsuarioNovo = async () => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
-  
-      if(conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined){
-        await api.post("/teamHerois", { idUsuario: idUsuario, herois: []});
-      }else{
-        const heroisJaNoTime = conferindoSeExisteTimeParaEsseIdUsuario.data[0].herois
-        console.log(heroisJaNoTime)
+      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get(
+        "/teamHerois",
+        { params: { idUsuario: idUsuario } }
+      );
+
+      if (conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined) {
+        await api.post("/teamHerois", { idUsuario: idUsuario, herois: [] });
       }
     }
-  }
-  
+  };
 
   const getherois = () => {
     setTimeout(async () => {
@@ -69,11 +82,13 @@ const CardHerois = () => {
       setIsLoading(false);
     }, 3000);
   };
-  
-  useEffect(() => {
-    getherois();
-    adiconandoListaHeroisVaziaAoUsuarioNovo();
-  }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getherois();
+      adiconandoListaHeroisVaziaAoUsuarioNovo();
+    }, [])
+  );
 
   return (
     <View style={styles.containerCards}>
@@ -87,7 +102,7 @@ const CardHerois = () => {
           style={styles.cardCarrosel}
           data={listaHerois}
           renderItem={({ item }) => (
-            <View style={styles.div}>
+            <View key={item.id} style={styles.div}>
               <Image
                 source={{ uri: item.img }}
                 style={{ width: 100, height: 150 }}

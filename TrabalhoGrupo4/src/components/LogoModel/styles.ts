@@ -10,13 +10,13 @@ export const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: "center",
     alignItems: "center",
-    resizeMode:'contain',
+    resizeMode: "contain",
   },
   img: {
-    width:140,
+    width: 140,
     alignItems: "center",
     justifyContent: "center",
-    resizeMode:'contain'
+    resizeMode: "contain",
   },
   logoText: {
     color: colors.yellowPrimary,
