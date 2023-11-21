@@ -1,6 +1,7 @@
-import { FlatList, View, Image, Text } from "react-native";
+import { FlatList, View, Image, Text, Button } from "react-native";
+import colors from "../../styles/theme/colors";
 import styles from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -38,9 +39,49 @@ const CardsTime = () => {
     setIsLoading(false);
   };
 
-  // useEffect(() => {
-  //   getherois();
-  // }, []);
+  const excluiHeroi = async (idHeroi: number) => {
+    const asyncId = await AsyncStorage.getItem("@user_id");
+    if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+
+      const timeHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
+
+      const listaHeroisTime = timeHerois.data[0].herois;
+      const idteamHerois = timeHerois.data[0].id;
+
+      let heroiEncontrado = false;
+      
+      listaHeroisTime.forEach((heroi: Heroi) => {
+        if (heroi.id === idHeroi) {
+          heroiEncontrado = true;
+        }
+      });
+      
+      if (heroiEncontrado) {
+
+        const novaListaTimeHerois = listaHeroisTime.filter((item: Heroi)=> item.id !== idHeroi)
+
+        const modeloAPi = {
+          id: idteamHerois,
+          idUsuario: idUsuario,
+          herois: [...novaListaTimeHerois],
+        };
+
+        try {
+          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+        } catch (error) {
+          alert("Herói excluido com sucesso!");
+          setListaHerois(novaListaTimeHerois)
+        }
+
+      }
+
+    } else {
+      console.log("Nenhum valor encontrado para @user_id");
+    }
+  };
 
   return (
     <View style={styles.containerCards}>
@@ -61,6 +102,11 @@ const CardsTime = () => {
                 style={{ width: 100, height: 150 }}
               />
               <Text style={styles.textCard}>{item.nome}</Text>
+              <Button
+                  color={colors.bluePrimary}
+                  title="Remover"
+                  onPress={() => excluiHeroi(item.id)}
+                />
             </View>
           )}
         />
