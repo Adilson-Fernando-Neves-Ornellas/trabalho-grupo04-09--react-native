@@ -19,9 +19,15 @@ const CardHerois = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const AdicionarHeroi = async () => {
-    await AsyncStorage.getItem('@user_id')
-    console.log(AsyncStorage.getItem('@user_id'))
+  const AdicionarHeroi = async (idHeroi : number) => {
+    console.log(idHeroi)
+    const asyncId =await AsyncStorage.getItem('@user_id')
+    if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+      console.log(idUsuario);
+    } else {
+      console.log('Nenhum valor encontrado para @user_id');
+    }
   }
 
   const getherois = () => {
@@ -62,7 +68,7 @@ const CardHerois = () => {
                 <Button
                   color={colors.bluePrimary}
                   title="Adicionar"
-                  onPress={AdicionarHeroi}
+                  onPress={() => AdicionarHeroi(item.id)}
                 />
               </View>
             </View>

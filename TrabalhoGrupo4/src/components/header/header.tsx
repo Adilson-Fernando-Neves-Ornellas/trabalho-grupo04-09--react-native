@@ -5,13 +5,16 @@ import TeamHeroesLogo from "../../assets/Images/TeamHeroesLogo.png";
 import { AuthContext } from "../../Context/Context";
 import Back from "../../assets/Images/Back.png";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Header = () => {
   const { setLogado } = useContext(AuthContext);
 
   const navigation = useNavigation();
 
-  const sair = () => {
+  const sair =  async () => {
+    await AsyncStorage.removeItem('@user_id')
     setLogado(false);
     navigation.navigate("login" as never);
   };
