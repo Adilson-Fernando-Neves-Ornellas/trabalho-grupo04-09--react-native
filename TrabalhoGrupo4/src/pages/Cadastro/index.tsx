@@ -7,6 +7,7 @@ import LogoTeamHero from "../../assets/Images/TeamHeroesLogo.png";
 import { useNavigation } from "@react-navigation/native";
 import { api } from "../../api/api";
 import { InputList } from "../../components/InputList";
+import { getDatabase, ref, push, update } from "firebase/database";
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -44,6 +45,29 @@ const Cadastro = () => {
     setConfirmaSenha("");
   };
 
+  const handleCadastro = async () => {
+    try {
+      const database = getDatabase();
+      const usersRef = ref(database, "users");
+  
+      const newUserRef = push(usersRef);
+
+      update(newUserRef, {
+        nome,
+        email,
+        senha,
+      });
+  
+      navigation.navigate("login" as never);
+      setNome("");
+      setEmail("");
+      setSenha("");
+      setConfirmaSenha("");
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+    }
+  };
+
   return (
     <View style={styles.viewContainer}>
       <StatusBar />
@@ -79,7 +103,7 @@ const Cadastro = () => {
 
           <Button
             text="Cadastrar"
-            onPress={adicionarNovo}
+            onPress={handleCadastro}
             buttonHeight={60}
             buttonWidth={200}
             textFontSize={36}
