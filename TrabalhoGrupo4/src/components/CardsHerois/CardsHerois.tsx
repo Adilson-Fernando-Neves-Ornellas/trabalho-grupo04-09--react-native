@@ -48,10 +48,8 @@ const CardHerois = () => {
       }
 
       if(produtoJaExistente === false){
-        alert("fazendo put");
         await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
       }else{
-        alert("não fix put nenhum");
       }
 
     } else {
