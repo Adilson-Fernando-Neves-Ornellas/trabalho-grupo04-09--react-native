@@ -21,6 +21,8 @@ export default function BottonTabRoutes() {
 				tabBarStyle: { backgroundColor: '#5F0900', paddingBottom: 2 },
 				tabBarInactiveTintColor: '#aaa',
 				tabBarActiveTintColor: '#fff',
+				tabBarHideOnKeyboard:true,
+				
 			}}
 		>
 			<Tab.Screen

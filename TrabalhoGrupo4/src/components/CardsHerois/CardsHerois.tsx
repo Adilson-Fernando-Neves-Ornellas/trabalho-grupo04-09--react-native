@@ -50,7 +50,7 @@ const CardHerois = () => {
 
       if(heroiEncontrado === false) {
         alert('Herói adicionado com sucesso!')
-        await api.put(`/teamHerois/${idteamHerois}`,      modeloAPi);
+        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
       }
 
     } else {
@@ -87,11 +87,6 @@ const CardHerois = () => {
     }, [])
   )
 
-  // useEffect(() => {
-  //   getherois();
-  //   adiconandoListaHeroisVaziaAoUsuarioNovo();
-  // }, []);
-
   return (
     <View style={styles.containerCards}>
       {isLoading ? (
@@ -104,7 +99,7 @@ const CardHerois = () => {
           style={styles.cardCarrosel}
           data={listaHerois}
           renderItem={({ item }) => (
-            <View style={styles.div}>
+            <View key={item.id} style={styles.div}>
               <Image
                 source={{ uri: item.img }}
                 style={{ width: 100, height: 150 }}

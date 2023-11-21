@@ -7,7 +7,8 @@ interface InputProps {
     placeholder: string,
     placeholderColor?: string,
     value:string,
-    setValue: React.Dispatch<React.SetStateAction<string>>
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    id:number
 }
 
 interface InputListProps extends ViewProps {
@@ -20,7 +21,7 @@ export const InputList = ({inputs, ...rest}: InputListProps) => {
         <View>
             {inputs.map((input) => {
                 return (
-                    <TextInput style={styles.input} placeholder={input.placeholder} placeholderTextColor={input.placeholderColor ? input.placeholderColor : colors.yellowInput} onChangeText={(text) => input.setValue(text)} value={input.value}/>
+                    <TextInput key={input.id} style={styles.input} placeholder={input.placeholder} placeholderTextColor={input.placeholderColor ? input.placeholderColor : colors.yellowInput} onChangeText={(text) => input.setValue(text)} value={input.value}/>
                 )
             })}
         </View>

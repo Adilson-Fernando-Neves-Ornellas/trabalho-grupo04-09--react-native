@@ -55,7 +55,7 @@ const CardsTime = () => {
           numColumns={2}
           data={listaHerois}
           renderItem={({ item }) => (
-            <View style={styles.div}>
+            <View key={item.id} style={styles.div}>
               <Image
                 source={{ uri: item.img }}
                 style={{ width: 100, height: 150 }}
