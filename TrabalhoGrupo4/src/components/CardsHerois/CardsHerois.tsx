@@ -24,10 +24,25 @@ const CardHerois = () => {
     const asyncId =await AsyncStorage.getItem('@user_id')
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
-      console.log(idUsuario);
+
+      const responseListaHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+      const listaHerois = responseListaHerois.data[0].herois
+
+      const heroiResponse = await api.get(`/herois/${idHeroi}`);
+      const heroi = heroiResponse.data;
+  
+      const modeloAPi = {
+        idUsuario: idUsuario,
+        herois: [...listaHerois, heroi],
+      }
+
+      const response = await api.post('/teamHerois', modeloAPi);
+      console.log('Resposta da API:', response.data);
     } else {
       console.log('Nenhum valor encontrado para @user_id');
     }
+
+    const response = await api.post("/teamHerois", );
   }
 
   const getherois = () => {

@@ -1,8 +1,10 @@
-import { ActivityIndicator, FlatList, View, Image, Text } from "react-native";
+import {FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
 import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 interface Heroi {
   id: number;
@@ -17,12 +19,15 @@ const CardsTime = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  function AdicionarHeroi() {}
-
   const getherois = () => {
     setTimeout(async () => {
-      const response = await api.get("/herois");
-      setListaHerois(response.data);
+      const asyncId = await AsyncStorage.getItem('@user_id')
+      if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+      const responseListaHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+      const listaHerois = responseListaHerois.data[0].herois
+      setListaHerois(listaHerois);
+      }
       setIsLoading(false);
     }, 3000);
   };
