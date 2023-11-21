@@ -1,10 +1,10 @@
-import {FlatList, View, Image, Text } from "react-native";
+import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
 import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { useFocusEffect } from "@react-navigation/native";
 
 interface Heroi {
   id: number;
@@ -16,25 +16,31 @@ interface Heroi {
 }
 
 const CardsTime = () => {
+  useFocusEffect(
+    React.useCallback(() => {
+      getherois();
+    }, [])
+  );
+
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const getherois = () => {
-    setTimeout(async () => {
-      const asyncId = await AsyncStorage.getItem('@user_id')
+  const getherois = async () => {
+      const asyncId = await AsyncStorage.getItem("@user_id");
       if (asyncId !== null) {
-      const idUsuario = JSON.parse(asyncId);
-      const responseListaHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
-      const listaHerois = responseListaHerois.data[0].herois
-      setListaHerois(listaHerois);
+        const idUsuario = JSON.parse(asyncId);
+        const responseListaHerois = await api.get("/teamHerois", {
+          params: { idUsuario: idUsuario },
+        });
+        const listaHerois = responseListaHerois.data[0].herois;
+        setListaHerois(listaHerois);
       }
       setIsLoading(false);
-    }, 3000);
   };
 
-  useEffect(() => {
-    getherois();
-  }, []);
+  // useEffect(() => {
+  //   getherois();
+  // }, []);
 
   return (
     <View style={styles.containerCards}>
