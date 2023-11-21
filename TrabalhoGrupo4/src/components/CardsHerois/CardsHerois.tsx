@@ -15,52 +15,66 @@ interface Heroi {
   defesa: number;
 }
 
+// interface ListaHerois {
+//   herois: Array<Heroi>;
+// }
+
 const CardHerois = () => {
   const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const AdicionarHeroi = async (idHeroi : number) => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+  const AdicionarHeroi = async (idHeroi: number) => {
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const timeHerois = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
+      const timeHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
 
-      const listaHeroisTime = timeHerois.data[0].herois
-      const idteamHerois = timeHerois.data[0].id
-      
+      const listaHeroisTimes = timeHerois.data[0].herois;
+      const idteamHerois = timeHerois.data[0].id;
+
       const heroiResponse = await api.get(`/herois/${idHeroi}`);
-      const heroi = heroiResponse.data;
+      const heroi: Heroi = heroiResponse.data;
+
+      listaHeroisTimes.map(async (heroi: Heroi) => {
+        console.log()
+        if (heroi.id === idHeroi) {
+          alert("Este herói já está na sua equipe");
+        } else {
+          alert("entrou no put");
+          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+        }
+      });
 
       const modeloAPi = {
         id: idteamHerois,
         idUsuario: idUsuario,
-        herois: [...listaHeroisTime, heroi],
-      }
-
-      await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
-
+        herois: [...listaHeroisTimes.herois, heroi],
+      };
     } else {
-      console.log('Nenhum valor encontrado para @user_id');
     }
-  }
-  
+  };
+
   const adiconandoListaHeroisVaziaAoUsuarioNovo = async () => {
-    const asyncId =await AsyncStorage.getItem('@user_id')
+    const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
 
-      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get('/teamHerois', { params: {idUsuario: idUsuario}})
-  
-      if(conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined){
-        await api.post("/teamHerois", { idUsuario: idUsuario, herois: []});
-      }else{
-        const heroisJaNoTime = conferindoSeExisteTimeParaEsseIdUsuario.data[0].herois
-        console.log(heroisJaNoTime)
+      const conferindoSeExisteTimeParaEsseIdUsuario = await api.get(
+        "/teamHerois",
+        { params: { idUsuario: idUsuario } }
+      );
+
+      if (conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined) {
+        await api.post("/teamHerois", { idUsuario: idUsuario, herois: [] });
+      } else {
+        const heroisJaNoTime =
+          conferindoSeExisteTimeParaEsseIdUsuario.data[0].herois;
       }
     }
-  }
-  
+  };
 
   const getherois = () => {
     setTimeout(async () => {
@@ -69,7 +83,7 @@ const CardHerois = () => {
       setIsLoading(false);
     }, 3000);
   };
-  
+
   useEffect(() => {
     getherois();
     adiconandoListaHeroisVaziaAoUsuarioNovo();
