@@ -17,7 +17,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   return (
-    <TouchableOpacity
+      <TouchableOpacity
       onPress={onPress}
       style={[styles.button, { width: buttonWidth, height: buttonHeight }]}
       {...rest}

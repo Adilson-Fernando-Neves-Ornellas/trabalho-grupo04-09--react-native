@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
   signupText: {
     color: colors.yellowPrimary,
     marginTop: 10,
-    fontFamily: fonts.texto
+    fontFamily: fonts.texto,
+    width: '100%',
+    fontSize: 16,
+    textAlign: 'center'
   },
   viewContent: {
     paddingTop: 75,

@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.texto,
     color: colors.yellowPrimary,
-    paddingTop: 15
+    paddingTop: 15,
+    width: '100%',
   },
   logo:{
       paddingTop: 75,
