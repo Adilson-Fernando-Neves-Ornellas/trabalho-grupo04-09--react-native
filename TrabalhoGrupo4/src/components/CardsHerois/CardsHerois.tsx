@@ -5,6 +5,7 @@ import { api } from "../../api/api";
 import colors from "../../styles/theme/colors";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface Heroi {
   id: number;
@@ -38,18 +39,18 @@ const CardHerois = () => {
         herois: [...listaHeroisTime, heroi],
       }
       
-      let produtoJaExistente = false
+      let heroiEncontrado = false
 
-      for(var i = 0; i < timeHerois.data[0].herois.length; i++) {
-        if(timeHerois.data[0].herois[i].id === idHeroi){
-          alert("Não é possivel adicionar um heroi que ja esta está no time");
-          produtoJaExistente = true
+      listaHeroisTime.forEach((heroi: Heroi) => {
+        if(heroi.id === idHeroi) {
+          alert("Esse herói já foi adicionado")
+          heroiEncontrado = true
         }
-      }
+      })
 
-      if(produtoJaExistente === false){
-        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
-      }else{
+      if(heroiEncontrado === false) {
+        alert('Herói adicionado com sucesso!')
+        await api.put(`/teamHerois/${idteamHerois}`,      modeloAPi);
       }
 
     } else {
@@ -79,10 +80,17 @@ const CardHerois = () => {
     }, 3000);
   };
   
-  useEffect(() => {
-    getherois();
-    adiconandoListaHeroisVaziaAoUsuarioNovo();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      getherois();
+      adiconandoListaHeroisVaziaAoUsuarioNovo();
+    }, [])
+  )
+
+  // useEffect(() => {
+  //   getherois();
+  //   adiconandoListaHeroisVaziaAoUsuarioNovo();
+  // }, []);
 
   return (
     <View style={styles.containerCards}>
