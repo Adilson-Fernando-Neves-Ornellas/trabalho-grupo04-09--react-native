@@ -2,14 +2,16 @@ import { View, Text, Image, ScrollView, Alert, StatusBar } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
 import { Footer } from "../../components/Footer";
-import LogoTeamHero from "../../assets/Images/TeamHeroesLogo.png";
+import LogoTeamHero from "../../assets/Images/aboutUsButton.png";
 import { CardAbout } from "../../components/CardAbout";
 import prof from '../../assets/Images/prof.png'
+import Header from "../../components/header/header";
 
 const About = () => {
   return (
     <View style={styles.viewContainer}>
       <StatusBar />
+      <Header/>
       <ScrollView accessibilityLabel="Rolagem">
         <View style={styles.viewContent}>
           <Image source={LogoTeamHero} style={styles.logo} />

@@ -1,4 +1,11 @@
-import { View, Text, StatusBar, ScrollView, Image } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StatusBar,
+  ScrollView,
+  Image,
+} from "react-native";
 import React, { useState, useContext } from "react";
 import LogoTeamHero from "../../assets/Images/TeamHeroesLogo.png";
 import { useNavigation } from "@react-navigation/native";
@@ -48,10 +55,12 @@ const Login = () => {
       <StatusBar />
       <ScrollView>
         <View style={styles.viewContent}>
-          <Image
-            source={LogoTeamHero}
-            style={[styles.logo, { marginTop: 10, marginBottom: 50 }]}
-          />
+          <TouchableOpacity onPress={() => {navigation.navigate('about' as never)}}>
+            <Image
+              source={LogoTeamHero}
+              style={[styles.logo, { marginTop: 10, marginBottom: 50 }]}
+            />
+          </TouchableOpacity>
           <InputList
             inputs={[
               { id: 1, placeholder: "email", value: email, setValue: setEmail },
@@ -59,19 +68,19 @@ const Login = () => {
             ]}
             limpar={limpar}
           />
-          <View style={{width: '100%', alignItems: 'center', marginTop: 29}}>
+          <View style={{ width: "100%", alignItems: "center", marginTop: 29 }}>
             <Button
               text="Entrar"
               buttonHeight={60}
               buttonWidth={200}
               textFontSize={36}
               onPress={Logar}
-              />
+            />
 
             <Text
               style={styles.signupText}
               onPress={() => navigation.navigate("cadastro" as never)}
-              >
+            >
               Não possui uma conta? Cadastre-se
             </Text>
           </View>

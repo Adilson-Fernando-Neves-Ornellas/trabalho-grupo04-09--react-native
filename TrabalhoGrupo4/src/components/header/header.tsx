@@ -20,7 +20,9 @@ const Header = () => {
 
   return (
     <View style={Style.containerheader}>
+      <TouchableOpacity onPress={() => {navigation.navigate('about' as never)}}>
       <Image source={TeamHeroesLogo} style={Style.imgHeader} />
+      </TouchableOpacity>
       <TouchableOpacity onPress={sair}>
         <Image source={Back} style={Style.imgHeader} />
       </TouchableOpacity>

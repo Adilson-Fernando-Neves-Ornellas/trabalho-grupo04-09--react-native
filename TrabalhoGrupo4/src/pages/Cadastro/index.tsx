@@ -1,4 +1,12 @@
-import { View, Text, Image, ScrollView, Alert, StatusBar } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  StatusBar,
+} from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
 import { Button } from "../../components/Button";
@@ -26,9 +34,7 @@ const Cadastro = () => {
       limpar();
       try {
         const response = await api.post("/usuarios", { nome, email, senha });
-        alert(
-          "cadastro efetuado com sucesso, retornando a pagina de login"
-        );
+        alert("cadastro efetuado com sucesso, retornando a pagina de login");
       } catch (error) {
         navigation.navigate("login" as never);
       }
@@ -49,51 +55,56 @@ const Cadastro = () => {
       <StatusBar />
       <ScrollView accessibilityLabel="Rolagem">
         <View style={styles.viewContent}>
-          <Image source={LogoTeamHero} style={styles.logo} />
-
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("about" as never);
+            }}
+          >
+            <Image source={LogoTeamHero} style={styles.logo} />
+          </TouchableOpacity>
           <InputList
             inputs={[
               {
                 placeholder: "nome",
                 value: nome,
                 setValue: setNome,
-                id:1,
+                id: 1,
               },
               {
                 placeholder: "email",
                 value: email,
                 setValue: setEmail,
-                id:2,
+                id: 2,
               },
               {
                 placeholder: "senha",
                 value: senha,
                 setValue: setSenha,
-                id:3,
+                id: 3,
               },
               {
                 placeholder: "confirmar senha",
                 value: confirmaSenha,
                 setValue: setConfirmaSenha,
-                id:4,
+                id: 4,
               },
             ]}
             limpar={limpar}
           />
-          
-          <View style={{width: '100%', alignItems: 'center', marginTop: 29}}>
+
+          <View style={{ width: "100%", alignItems: "center", marginTop: 29 }}>
             <Button
               text="Cadastrar"
               onPress={adicionarNovo}
               buttonHeight={60}
               buttonWidth={200}
               textFontSize={36}
-              />
+            />
 
             <Text
               onPress={() => navigation.navigate("login" as never)}
               style={styles.text}
-              >
+            >
               Já possui uma conta? Entre!
             </Text>
           </View>

@@ -4,7 +4,9 @@ import Time from "../../pages/Time";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TimeIcon from "../../assets/Images/teamButton.png"
 import HomeIcon from "../../assets/Images/heroesButton.png"
+import AboutImg from '../../assets/Images/aboutUsButton.png'
 import About from "../../pages/About";
+
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -14,7 +16,7 @@ export type RootTabParamList = {
 	About: {};
 }
 
-export default function BottonTabRoutes() {
+export default function BottomTabRoutes() {
 
     return (
 		<Tab.Navigator
@@ -54,16 +56,6 @@ export default function BottonTabRoutes() {
 				}}
 				name="Time"
 				component={Time}
-			/>
-			<Tab.Screen
-				options={{
-					tabBarShowLabel:false,
-					tabBarIcon: ({ color }) => (
-						<Text>Sobre</Text>
-					)
-				}}
-				name="About"
-				component={About}
 			/>
 		</Tab.Navigator>
 	);
