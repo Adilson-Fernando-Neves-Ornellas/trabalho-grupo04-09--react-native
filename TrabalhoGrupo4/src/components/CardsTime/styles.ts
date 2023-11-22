@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: "row",
     justifyContent: "space-between",
+    maxHeight: '50%'
   },
   cardCarrosel: {
     padding: 10,

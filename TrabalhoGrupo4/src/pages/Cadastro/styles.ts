@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.redBackground,
   },
   viewContent: {
-    paddingTop: 75,
+    paddingTop: 35,
     flexDirection: 'column',
     alignItems: 'center',
   },
   text: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: fonts.texto,
     color: colors.yellowPrimary,
     paddingTop: 15,
