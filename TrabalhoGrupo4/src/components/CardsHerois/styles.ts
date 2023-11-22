@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   div: {
     marginBottom: 15,
     display: "flex",
-    gap: 10,
+    gap: 5,
     flexDirection: "row",
   },
   textCard: {
