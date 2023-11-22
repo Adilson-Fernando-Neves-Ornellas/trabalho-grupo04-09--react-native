@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
     width: 100,
   },
   flyImg: {
+    resizeMode: 'contain',
+    transform: [{rotateX: '15deg'}, {rotateZ: '0.5rad'}],
     width: 100,
     height: 50,
   },
