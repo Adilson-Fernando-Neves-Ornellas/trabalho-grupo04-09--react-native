@@ -54,28 +54,31 @@ const CardsTime = () => {
 
       const listaHeroisTime = timeHerois.data[0].herois;
       const idteamHerois = timeHerois.data[0].id;
-
-      const heroiResponse = await api.get(`/herois/${idHeroi}`);
-      const heroi = heroiResponse.data;
-
-      const modeloAPi = {
-        id: idteamHerois,
-        idUsuario: idUsuario,
-        herois: [...listaHeroisTime, heroi],
-      };
-
+    
+      
       let heroiEncontrado = false;
 
       listaHeroisTime.forEach((heroi: Heroi) => {
         if (heroi.id === idHeroi) {
-          alert("Esse herói já foi adicionado");
-          heroiEncontrado = true;
+           heroiEncontrado = true;
         }
       });
 
-      if (heroiEncontrado === false) {
-        alert("Herói adicionado com sucesso!");
-        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+      if (heroiEncontrado) {
+        const listaTimeAtualizada = listaHeroisTime.filter((heroi:Heroi)=>heroi.id !== idHeroi)
+        const modeloAPi = {
+          id: idteamHerois,
+          idUsuario: idUsuario,
+          herois: [...listaTimeAtualizada],
+        };
+
+        try {
+          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+        } catch (error) {
+          alert("Herói excluido com sucesso!");
+          setListaHerois(listaTimeAtualizada)
+        }
+
       }
     } else {
       console.log("Nenhum valor encontrado para @user_id");
