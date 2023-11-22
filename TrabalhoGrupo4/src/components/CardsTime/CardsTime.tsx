@@ -1,29 +1,21 @@
 import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
 import { Button } from "../Button";
-
-interface Heroi {
-  id: number;
-  nome: string;
-  descrição: string;
-  img: string;
-  forca: number;
-  defesa: number;
-}
+import { AssembleContext, Heroi } from "../../Context/AssembleContext";
 
 const CardsTime = () => {
+  const { setListaHerois, listaHerois } = useContext(AssembleContext)
+
   useFocusEffect(
     React.useCallback(() => {
       getherois();
     }, [])
   );
-
-  const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getherois = async () => {

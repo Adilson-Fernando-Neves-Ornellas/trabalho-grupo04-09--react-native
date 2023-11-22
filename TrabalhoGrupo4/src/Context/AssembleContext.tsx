@@ -6,25 +6,34 @@ import {
     SetStateAction,
   } from "react";
   
+  export interface Heroi {
+    id: number;
+    nome: string;
+    descrição: string;
+    img: string;
+    forca: number;
+    defesa: number;
+  }
+
   interface AssembleContextProps {
-    logado: boolean;
-    setLogado: Dispatch<SetStateAction<boolean>>;
+    listaHerois: Heroi[]
+    setListaHerois: Dispatch<SetStateAction<Heroi[]>>;
   }
   
   interface AssembleProviderProps {
     children: ReactNode;
   }
   
-  export const AssembleContext = createContext<AuthContextProps>({
-    logado: false,
-    setLogado: () => {},
+  export const AssembleContext = createContext<AssembleContextProps>({
+    listaHerois: [],
+    setListaHerois: () => {},
   });
   
-  export const AssembleProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const [logado, setLogado] = useState<boolean>(false);
+  export const AssembleProvider: React.FC<AssembleProviderProps> = ({ children }) => {
+    const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
   
     return (
-      <AssembleContext.Provider value={{ logado, setLogado }}>
+      <AssembleContext.Provider value={{ listaHerois, setListaHerois }}>
         {children}
       </AssembleContext.Provider>
     );
