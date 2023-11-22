@@ -1,15 +1,17 @@
-import {Image} from "react-native";
+import {Image, Text} from "react-native";
 import Home from "../../pages/Home";
 import Time from "../../pages/Time";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TimeIcon from "../../assets/Images/teamButton.png"
 import HomeIcon from "../../assets/Images/heroesButton.png"
+import About from "../../pages/About";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export type RootTabParamList = {
 	Home: {};
 	Time: {};
+	About: {};
 }
 
 export default function BottonTabRoutes() {
@@ -52,6 +54,16 @@ export default function BottonTabRoutes() {
 				}}
 				name="Time"
 				component={Time}
+			/>
+			<Tab.Screen
+				options={{
+					tabBarShowLabel:false,
+					tabBarIcon: ({ color }) => (
+						<Text>Sobre</Text>
+					)
+				}}
+				name="About"
+				component={About}
 			/>
 		</Tab.Navigator>
 	);
