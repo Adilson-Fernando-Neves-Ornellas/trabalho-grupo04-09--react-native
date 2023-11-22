@@ -98,7 +98,7 @@ const CardsTime = () => {
               />
               <Text style={styles.textCard}>{item.nome}</Text>
               <Button
-                buttonHeight={20}
+                buttonHeight={22}
                 buttonWidth={100}
                 text="Excluir"
                 onPress={() => ExcluirHeroi(item.id)}
