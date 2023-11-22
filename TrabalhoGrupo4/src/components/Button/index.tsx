@@ -1,11 +1,11 @@
-import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
+import { TouchableOpacity, Text, TouchableOpacityProps, GestureResponderEvent } from "react-native";
 import { styles } from "./styles";
 interface ButtonProps extends TouchableOpacityProps {
   text: string;
   buttonWidth?: any;
   buttonHeight?: any;
   textFontSize?: any;
-  onPress?: (e: any) => Promise<void>;
+  onPress?: (e: GestureResponderEvent) => void | Promise<void>;
 }
 
 export const Button = ({
