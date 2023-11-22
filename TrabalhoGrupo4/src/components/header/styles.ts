@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 import colors from "../../styles/theme/colors";
+import fonts from "../../styles/theme/fonts";
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   containerheader: {
     backgroundColor: colors.redHeader,
     maxHeight: 61,
@@ -14,6 +15,14 @@ const Styles = StyleSheet.create({
     width: 100,
     height: 50,
   },
+  textUser: {
+    color: colors.yellowPrimary,
+    fontFamily: fonts.texto,
+  },
+  containerUser: {
+    alignSelf: "center",
+    width:100,
+  },
 });
 
-export default Styles;
+export default styles;

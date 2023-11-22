@@ -20,7 +20,7 @@ import { AuthContext } from "../../Context/Context";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const { setLogado } = useContext(AuthContext);
+  const { setLogado, setNome } = useContext(AuthContext);
 
   const navigation = useNavigation();
 
@@ -37,7 +37,12 @@ const Login = () => {
           "@user_id",
           JSON.stringify(response.data[0].id)
         );
+        await AsyncStorage.setItem(
+          "@user_nome",
+          JSON.stringify(response.data[0].nome)
+        );
         setLogado(true);
+        setNome(response.data[0].nome)
         navigation.navigate("home" as never);
       }
     } else {
