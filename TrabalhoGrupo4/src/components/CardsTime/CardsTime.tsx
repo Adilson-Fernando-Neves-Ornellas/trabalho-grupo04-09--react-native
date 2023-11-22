@@ -5,6 +5,7 @@ import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
+import { Button } from "../Button";
 
 interface Heroi {
   id: number;
@@ -42,6 +43,46 @@ const CardsTime = () => {
   //   getherois();
   // }, []);
 
+  const ExcluirHeroi = async (idHeroi: number) => {
+    const asyncId = await AsyncStorage.getItem("@user_id");
+    if (asyncId !== null) {
+      const idUsuario = JSON.parse(asyncId);
+
+      const timeHerois = await api.get("/teamHerois", {
+        params: { idUsuario: idUsuario },
+      });
+
+      const listaHeroisTime = timeHerois.data[0].herois;
+      const idteamHerois = timeHerois.data[0].id;
+
+      const heroiResponse = await api.get(`/herois/${idHeroi}`);
+      const heroi = heroiResponse.data;
+
+      const modeloAPi = {
+        id: idteamHerois,
+        idUsuario: idUsuario,
+        herois: [...listaHeroisTime, heroi],
+      };
+
+      let heroiEncontrado = false;
+
+      listaHeroisTime.forEach((heroi: Heroi) => {
+        if (heroi.id === idHeroi) {
+          alert("Esse herói já foi adicionado");
+          heroiEncontrado = true;
+        }
+      });
+
+      if (heroiEncontrado === false) {
+        alert("Herói adicionado com sucesso!");
+        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+      }
+    } else {
+      console.log("Nenhum valor encontrado para @user_id");
+    }
+  };
+
+  
   return (
     <View style={styles.containerCards}>
       {isLoading ? (
@@ -61,6 +102,12 @@ const CardsTime = () => {
                 style={{ width: 100, height: 150 }}
               />
               <Text style={styles.textCard}>{item.nome}</Text>
+              <Button
+                  buttonHeight={20}
+                  buttonWidth={100}
+                  text="Excluir"
+                  onPress={() => ExcluirHeroi(item.id)}
+                />
             </View>
           )}
         />
