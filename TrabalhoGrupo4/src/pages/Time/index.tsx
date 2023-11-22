@@ -15,7 +15,9 @@ const Time = () => {
       <Header />
       <Text style={styles.tituloPageHome}>Time Atual</Text>
       <CardsTime />
-      <Button text='Assemble' buttonWidth={200} buttonHeight={60} textFontSize={36} onPress={() => {setIsModalVisible(true)}}/>
+      <View style={styles.buttonAssemble}>
+      <Button text='Assemble!' buttonWidth={200} buttonHeight={60} textFontSize={36} onPress={() => {setIsModalVisible(true)}}/>
+      </View>
       {isModalVisible && <ModalAssemble isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>}
     </View>
   );

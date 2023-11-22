@@ -4,12 +4,13 @@ import fonts from "../../styles/theme/fonts";
 
 const styles = StyleSheet.create({
   containerCards: {
-    margin: 30,
+    margin: 10,
     backgroundColor: colors.blackPrimary,
     borderRadius: 8,
     flexDirection: "row",
     justifyContent: "space-between",
-    maxHeight: '50%'
+    maxHeight: '67%',
+    
   },
   cardCarrosel: {
     padding: 10,
@@ -17,13 +18,10 @@ const styles = StyleSheet.create({
   div: {
     width: "50%",
     marginBottom: 15,
-    // marginLeft: 15,
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
   },
   textCard: {
-    alignSelf: "center",
+    justifyContent:'center',
     color: colors.yellowPrimary,
     fontSize: 16,
     fontFamily: fonts.texto,
