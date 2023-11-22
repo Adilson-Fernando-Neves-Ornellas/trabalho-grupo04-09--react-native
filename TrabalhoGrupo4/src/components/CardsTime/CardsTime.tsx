@@ -1,6 +1,6 @@
 import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
-import React, { useEffect, useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -9,7 +9,8 @@ import { Button } from "../Button";
 import { AssembleContext, Heroi } from "../../Context/AssembleContext";
 
 const CardsTime = () => {
-  const { setListaHerois, listaHerois } = useContext(AssembleContext)
+  const { setListaHerois } = useContext(AssembleContext);
+  const [listaHeroisTime, setListaHeroisTime] = useState<Heroi[]>([]);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -25,8 +26,8 @@ const CardsTime = () => {
       const responseListaHerois = await api.get("/teamHerois", {
         params: { idUsuario: idUsuario },
       });
-      const listaHerois = responseListaHerois.data[0].herois;
-      setListaHerois(listaHerois);
+      setListaHeroisTime(responseListaHerois.data[0].herois);
+      setListaHerois(responseListaHerois.data[0].herois);
     }
     setIsLoading(false);
   };
@@ -46,18 +47,19 @@ const CardsTime = () => {
 
       const listaHeroisTime = timeHerois.data[0].herois;
       const idteamHerois = timeHerois.data[0].id;
-    
-      
+
       let heroiEncontrado = false;
 
       listaHeroisTime.forEach((heroi: Heroi) => {
         if (heroi.id === idHeroi) {
-           heroiEncontrado = true;
+          heroiEncontrado = true;
         }
       });
 
       if (heroiEncontrado) {
-        const listaTimeAtualizada = listaHeroisTime.filter((heroi:Heroi)=>heroi.id !== idHeroi)
+        const listaTimeAtualizada = listaHeroisTime.filter(
+          (heroi: Heroi) => heroi.id !== idHeroi
+        );
         const modeloAPi = {
           id: idteamHerois,
           idUsuario: idUsuario,
@@ -68,16 +70,14 @@ const CardsTime = () => {
           await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
         } catch (error) {
           alert("Herói excluido com sucesso!");
-          setListaHerois(listaTimeAtualizada)
+          setListaHerois(listaTimeAtualizada);
         }
-
       }
     } else {
       console.log("Nenhum valor encontrado para @user_id");
     }
   };
 
-  
   return (
     <View style={styles.containerCards}>
       {isLoading ? (
@@ -89,7 +89,7 @@ const CardsTime = () => {
         <FlatList
           style={styles.cardCarrosel}
           numColumns={2}
-          data={listaHerois}
+          data={listaHeroisTime}
           renderItem={({ item }) => (
             <View key={item.id} style={styles.div}>
               <Image
@@ -98,11 +98,11 @@ const CardsTime = () => {
               />
               <Text style={styles.textCard}>{item.nome}</Text>
               <Button
-                  buttonHeight={20}
-                  buttonWidth={100}
-                  text="Excluir"
-                  onPress={() => ExcluirHeroi(item.id)}
-                />
+                buttonHeight={20}
+                buttonWidth={100}
+                text="Excluir"
+                onPress={() => ExcluirHeroi(item.id)}
+              />
             </View>
           )}
         />
