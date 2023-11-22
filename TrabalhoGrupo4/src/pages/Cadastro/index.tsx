@@ -80,21 +80,23 @@ const Cadastro = () => {
             ]}
             limpar={limpar}
           />
+          
+          <View style={{width: '100%', alignItems: 'center', marginTop: 29}}>
+            <Button
+              text="Cadastrar"
+              onPress={adicionarNovo}
+              buttonHeight={60}
+              buttonWidth={200}
+              textFontSize={36}
+              />
 
-          <Button
-            text="Cadastrar"
-            onPress={adicionarNovo}
-            buttonHeight={60}
-            buttonWidth={200}
-            textFontSize={36}
-          />
-
-          <Text
-            onPress={() => navigation.navigate("login" as never)}
-            style={styles.text}
-          >
-            Já possui uma conta? Entre!
-          </Text>
+            <Text
+              onPress={() => navigation.navigate("login" as never)}
+              style={styles.text}
+              >
+              Já possui uma conta? Entre!
+            </Text>
+          </View>
         </View>
       </ScrollView>
       <Footer />

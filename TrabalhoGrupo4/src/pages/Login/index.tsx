@@ -59,20 +59,22 @@ const Login = () => {
             ]}
             limpar={limpar}
           />
-          <Button
-            text="Entrar"
-            buttonHeight={60}
-            buttonWidth={200}
-            textFontSize={36}
-            onPress={Logar}
-          />
+          <View style={{width: '100%', alignItems: 'center', marginTop: 29}}>
+            <Button
+              text="Entrar"
+              buttonHeight={60}
+              buttonWidth={200}
+              textFontSize={36}
+              onPress={Logar}
+              />
 
-          <Text
-            style={styles.signupText}
-            onPress={() => navigation.navigate("cadastro" as never)}
-          >
-            Não possui uma conta? Cadastre-se
-          </Text>
+            <Text
+              style={styles.signupText}
+              onPress={() => navigation.navigate("cadastro" as never)}
+              >
+              Não possui uma conta? Cadastre-se
+            </Text>
+          </View>
         </View>
       </ScrollView>
 

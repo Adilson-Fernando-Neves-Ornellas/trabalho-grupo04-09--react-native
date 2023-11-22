@@ -4,5 +4,5 @@ export default {
     bluePrimary: '#0A27BF',
     yellowPrimary: '#D4BF00',
     yellowInput: '#D4BF00CC',
-    blackPrimary: '#1E1E1E',
+    blackPrimary: '#171717',
    };

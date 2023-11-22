@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   cardCarrosel: {
     padding: 10,
+    height: '80%'
   },
   div: {
     marginBottom: 15,
@@ -22,6 +23,8 @@ const styles = StyleSheet.create({
     color: colors.yellowPrimary,
     fontSize: 16,
     fontFamily: fonts.texto,
+    width: '100%',
+    textAlign: 'center'
   },
   infoCard: {
     display: "flex",

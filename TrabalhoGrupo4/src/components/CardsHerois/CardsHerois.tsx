@@ -1,4 +1,4 @@
-import { FlatList, View, Image, Text, Button } from "react-native";
+import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
 import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
@@ -6,6 +6,7 @@ import colors from "../../styles/theme/colors";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
+import { Button } from "../Button";
 
 interface Heroi {
   id: number;
@@ -114,10 +115,16 @@ const CardHerois = () => {
                 <Text style={styles.textCard}> Força: {item.forca}</Text>
                 <Text style={styles.textCard}> Defesa: {item.defesa}</Text>
                 <Button
-                  color={colors.bluePrimary}
-                  title="Adicionar"
+                  buttonHeight={20}
+                  buttonWidth={100}
+                  text="Adicionar"
                   onPress={() => AdicionarHeroi(item.id)}
                 />
+              </View>
+              <View style={{justifyContent: 'center', alignItems: 'center', width: '40%'}}>
+                <Text style={styles.textCard}>
+                  {item.descrição}
+                </Text>
               </View>
             </View>
           )}
