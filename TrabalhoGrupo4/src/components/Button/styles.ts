@@ -5,10 +5,10 @@ import fonts from "../../styles/theme/fonts";
 export const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.bluePrimary,
+    display: "flex",
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 16,
-    borderBottomWidth:2,
+    borderRadius: 16
   },
   text: {
     color: colors.yellowPrimary,
@@ -16,7 +16,5 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     width: '100%',
-    height: '100%',
-    bottom: 5
   },
 });
