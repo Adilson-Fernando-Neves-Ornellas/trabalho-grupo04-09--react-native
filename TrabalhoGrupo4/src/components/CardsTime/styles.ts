@@ -26,6 +26,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.texto,
   },
+  textCardNotFound: {
+    textAlign:'center',
+    color: colors.yellowPrimary,
+    fontSize: 22,
+    fontFamily: fonts.texto,
+    width:'100%',
+  },
 });
 
 export default styles;

@@ -6,6 +6,7 @@ import flyhero from "../../assets/Images/flyhero.png";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "./styles";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const Header = () => {
   const { setLogado, nome, setNome } = useContext(AuthContext);
@@ -31,8 +32,12 @@ const Header = () => {
       <View style={styles.containerUser}>
         {nome != "" && <Text style={styles.textUser}>Bem vindo, {nome}</Text>}
       </View>
-      <TouchableOpacity style={styles.flyImg} onPress={sair}>
+      <TouchableOpacity
+        style={{ flexDirection: "row", gap: -25 }}
+        onPress={sair}
+      >
         <Image source={flyhero} style={styles.flyImg} />
+        <FontAwesome5 name="door-open" size={20} color="black" />
       </TouchableOpacity>
     </View>
   );

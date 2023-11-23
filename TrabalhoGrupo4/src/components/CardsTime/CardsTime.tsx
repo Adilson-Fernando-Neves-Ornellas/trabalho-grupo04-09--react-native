@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
 import { Button } from "../Button";
 import { AssembleContext, Heroi } from "../../Context/AssembleContext";
+import colors from "../../styles/theme/colors";
 
 const CardsTime = () => {
   const { setListaHerois } = useContext(AssembleContext);
@@ -31,10 +32,6 @@ const CardsTime = () => {
     }
     setIsLoading(false);
   };
-
-  // useEffect(() => {
-  //   getherois();
-  // }, []);
 
   const ExcluirHeroi = async (idHeroi: number) => {
     const asyncId = await AsyncStorage.getItem("@user_id");
@@ -71,6 +68,7 @@ const CardsTime = () => {
         } catch (error) {
           alert("Herói excluido com sucesso!");
           setListaHerois(listaTimeAtualizada);
+          setListaHeroisTime(listaTimeAtualizada);
         }
       }
     } else {
@@ -85,7 +83,7 @@ const CardsTime = () => {
           <Text style={styles.textCard}>CARREGANDO...</Text>
           <Image style={{ maxWidth: "100%" }} source={superGif} />
         </View>
-      ) : (
+      ) : listaHeroisTime.length > 0 ? (
         <FlatList
           style={styles.cardCarrosel}
           numColumns={2}
@@ -106,6 +104,15 @@ const CardsTime = () => {
             </View>
           )}
         />
+      ) : (
+        <View style={{width:'100%', backgroundColor:colors.redBackground}}>
+          <Text style={styles.textCardNotFound}>
+            Nenhum herói convocado para seu time!
+          </Text>
+          <Text style={styles.textCardNotFound}>
+            Por favor, navegue até a aba "HEROES" e convoque seus heróis!
+          </Text>
+        </View>
       )}
     </View>
   );

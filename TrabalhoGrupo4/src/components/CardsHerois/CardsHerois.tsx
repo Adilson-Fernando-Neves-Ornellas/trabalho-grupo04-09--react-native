@@ -116,7 +116,7 @@ const CardHerois = () => {
                 <Text style={styles.textCard}> Defesa: {item.defesa}</Text>
                 <Button
                   buttonHeight={22}
-                  buttonWidth={100}
+                  buttonWidth={80}
                   text="Adicionar"
                   onPress={() => AdicionarHeroi(item.id)}
                 />
