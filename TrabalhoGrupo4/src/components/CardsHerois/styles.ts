@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     margin: 30,
     backgroundColor: colors.blackPrimary,
     borderRadius: 8,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    maxHeight: '85%',
   },
   cardCarrosel: {
     padding: 10,
