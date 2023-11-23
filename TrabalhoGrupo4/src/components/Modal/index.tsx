@@ -1,4 +1,4 @@
-import { View, Modal, Image, TouchableOpacity } from "react-native";
+import { View, Modal, Image, TouchableOpacity, ScrollView } from "react-native";
 import { styles } from "./styles";
 import AssembleImage from "../../assets/Images/assembleGif.gif";
 import { AntDesign } from "@expo/vector-icons";
@@ -24,21 +24,21 @@ export const ModalAssemble = ({
         setIsModalVisible(false);
       }}
     >
-      <View style={styles.modal}>
-        <View style={styles.containerModal}>
+        <View style={styles.modal}>
+            <View style={styles.containerModal}>
             <TouchableOpacity
                 style={{flexDirection: 'column'}}
                 onPress={() => {
                 setIsModalVisible(false);
-                }}
-            >
+              }}
+              >
                 <AntDesign name="close" size={32} color={colors.yellowPrimary} style={{marginLeft: '90%'}} />
             </TouchableOpacity>
             <CardAssemble/>
             <Image style={styles.image} source={AssembleImage} />
-            
+            </View>
         </View>
-      </View>
+      
     </Modal>
   );
 };

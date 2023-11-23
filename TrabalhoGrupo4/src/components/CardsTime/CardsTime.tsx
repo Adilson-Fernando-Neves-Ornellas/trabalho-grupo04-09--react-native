@@ -84,27 +84,43 @@ const CardsTime = () => {
           <Image style={{ maxWidth: "100%", maxHeight: '80%' }} source={superGif} />
         </View>
       ) : listaHeroisTime.length > 0 ? (
-        <FlatList
-          style={styles.cardCarrosel}
-          numColumns={2}
-          data={listaHeroisTime}
-          contentContainerStyle={{flexDirection: 'column', alignItems: 'center'}}
-          renderItem={({ item }) => (
-            <View key={item.id} style={styles.div}>
-              <Image
-                source={{ uri: item.img }}
-                style={{ width: 100, height: 150 }}
-              />
-              <Text style={styles.textCard}>{item.nome}</Text>
-              <Button
-                buttonHeight={22}
-                buttonWidth={100}
-                text="Excluir"
-                onPress={() => ExcluirHeroi(item.id)}
-              />
-            </View>
-          )}
-        />
+        <View style= {styles.containerCards} >
+            {listaHeroisTime.map((item) => (
+                <View key={item.id} style={styles.card}>
+                <Image
+                    source={{uri: item.img}}
+                    style={{width: 100, height: 150}} />
+                <Text style={styles.textCard}>{item.nome}</Text>
+                <Button
+                  buttonHeight={22}
+                  buttonWidth={100}
+                  text="Excluir"
+                  onPress={() => ExcluirHeroi(item.id)}
+                />
+                </View>
+            ))}
+        </View>
+        // <FlatList
+        //   style={styles.cardCarrosel}
+        //   numColumns={2}
+        //   data={listaHeroisTime}
+        //   contentContainerStyle={{flexDirection: 'column', alignItems: 'center'}}
+        //   renderItem={({ item }) => (
+        //     <View key={item.id} style={styles.div}>
+        //       <Image
+        //         source={{ uri: item.img }}
+        //         style={{ width: 100, height: 150 }}
+        //       />
+        //       <Text style={styles.textCard}>{item.nome}</Text>
+        //       <Button
+        //         buttonHeight={22}
+        //         buttonWidth={100}
+        //         text="Excluir"
+        //         onPress={() => ExcluirHeroi(item.id)}
+        //       />
+        //     </View>
+        //   )}
+        // />
       ) : (
         <View style={{width:'100%', backgroundColor:colors.redBackground}}>
           <Text style={styles.textCardNotFound}>

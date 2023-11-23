@@ -19,7 +19,7 @@ export const Button = ({
   return (
       <TouchableOpacity
       onPress={onPress}
-      style={[styles.button, { width: buttonWidth }]}
+      style={[styles.button, { width: buttonWidth, height: buttonHeight }]}
       {...rest}
     >
       <Text style={[styles.text, { fontSize: textFontSize }]}>{text}</Text>

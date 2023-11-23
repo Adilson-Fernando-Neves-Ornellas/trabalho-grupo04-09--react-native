@@ -22,13 +22,10 @@ export const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
         width: '80%',
-        maxHeight: '80%'
+        height: '70%'
     },
     image: {
         resizeMode: 'contain',
         width: '100%',
-        height: '100%',
-        borderRadius: 20,
-        overflow: 'hidden'
     }
 })
