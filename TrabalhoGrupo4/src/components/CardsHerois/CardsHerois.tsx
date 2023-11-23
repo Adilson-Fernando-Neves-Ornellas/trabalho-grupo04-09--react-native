@@ -101,7 +101,9 @@ const CardHerois = () => {
         <FlatList
           style={styles.cardCarrosel}
           data={listaHeroisTotal}
+          contentContainerStyle={{alignItems: 'center'}}
           renderItem={({ item }) => (
+            <>
             <View key={item.id} style={styles.div}>
               <Image
                 source={{ uri: item.img }}
@@ -116,14 +118,17 @@ const CardHerois = () => {
                 <Text style={styles.textCardDescription}>
                   {item.descrição}
                 </Text>
-                <Button
-                  buttonHeight={28}
-                  buttonWidth={195}
-                  text="Adicionar"
-                  onPress={() => AdicionarHeroi(item.id)}
-                />
               </View>
             </View>
+            <View style={{alignItems:'center', paddingBottom: 16}}>
+              <Button
+                buttonHeight={28}
+                buttonWidth={195}
+                text="Adicionar"
+                onPress={() => AdicionarHeroi(item.id)}
+                />
+            </View>
+            </>
           )}
         />
       )}

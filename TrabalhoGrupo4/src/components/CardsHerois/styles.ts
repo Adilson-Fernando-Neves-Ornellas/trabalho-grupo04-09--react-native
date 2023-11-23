@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     height: "85%",
   },
   div: {
-    marginBottom: 15,
+    marginBottom: 10,
     display: "flex",
-    gap: 5,
+    gap: 15,
     flexDirection: "row",
   },
   textCard: {
@@ -29,9 +29,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   infoCard: {
+    marginTop: -5,
     display: "flex",
     flexDirection: "column",
-    gap: 5,
+    gap: 0,
   },
   textCardDescription:{
     color: colors.yellowPrimary,
