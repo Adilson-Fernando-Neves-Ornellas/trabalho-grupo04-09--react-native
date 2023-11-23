@@ -5,6 +5,7 @@ import AssembleImage from "../../assets/Images/assembleGif.gif";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../styles/theme/colors";
 import { AssembleContext } from "../../Context/AssembleContext";
+import { CardAssemble } from "../CardAssemble";
 
 interface ModalProps {
   isModalVisible: boolean;
@@ -29,14 +30,17 @@ export const ModalAssemble = ({
     >
       <View style={styles.modal}>
         <View style={styles.containerModal}>
-          <Image style={styles.image} source={AssembleImage} />
-          <TouchableOpacity
-            onPress={() => {
-              setIsModalVisible(false);
-            }}
-          >
-            <AntDesign name="close" size={24} color={colors.bluePrimary} />
-          </TouchableOpacity>
+            <TouchableOpacity
+                style={{flexDirection: 'column'}}
+                onPress={() => {
+                setIsModalVisible(false);
+                }}
+            >
+                <AntDesign name="close" size={32} color={colors.yellowPrimary} style={{marginLeft: '90%'}} />
+            </TouchableOpacity>
+            <CardAssemble/>
+            <Image style={styles.image} source={AssembleImage} />
+            
         </View>
       </View>
     </Modal>

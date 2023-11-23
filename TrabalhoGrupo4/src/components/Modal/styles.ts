@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     containerModal: {
         backgroundColor: colors.blackPrimary,
         borderRadius: 20,
-        padding: '5%',
+        padding: '2%',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -28,5 +28,7 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
         width: '100%',
         height: '100%',
+        borderRadius: 20,
+        overflow: 'hidden'
     }
 })
