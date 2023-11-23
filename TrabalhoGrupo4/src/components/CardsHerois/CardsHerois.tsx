@@ -40,23 +40,26 @@ const CardHerois = () => {
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
       };
-      console.log(listaHeroisTime)
 
       let heroiEncontrado = false;
 
       listaHeroisTime.forEach((heroi: Heroi) => {
         if (heroi.id === idHeroi) {
-          alert("Esse herói já foi adicionado");
+          alert("Esse herói já foi convocado para seu time!");
           heroiEncontrado = true;
         }
       });
 
       if (heroiEncontrado === false) {
         if (listaHeroisTime.length >= 6) {
-          alert("Você só pode adicionar até cinco heróis no seu time")
-        } else{
+          alert("Limite máximo do time atingido (6)!");
+        } else {
           alert("Herói adicionado com sucesso!");
-          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+          try {
+            await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+          } catch (error) {
+            
+          }
         }
       }
     } else {
@@ -100,39 +103,42 @@ const CardHerois = () => {
       {isLoading ? (
         <View>
           <Text style={styles.textCard}> CARREGANDO...</Text>
-          <Image style={{ maxWidth: "100%", maxHeight: '75%' }} source={superGif} />
+          <Image
+            style={{ maxWidth: "100%", maxHeight: "75%" }}
+            source={superGif}
+          />
         </View>
       ) : (
         <FlatList
           style={styles.cardCarrosel}
           data={listaHerois}
-          contentContainerStyle={{alignItems: 'center'}}
+          contentContainerStyle={{ alignItems: "center" }}
           renderItem={({ item }) => (
             <>
-            <View key={item.id} style={styles.div}>
-              <Image
-                source={{ uri: item.img }}
-                style={{ width: 100, height: 150 }}
-              />
-              <View style={styles.infoCard}>
-                <Text style={[styles.textCard, { marginTop: 8 }]}>
-                  {item.nome}
-                </Text>
-                <Text style={styles.textCard}> Força: {item.forca}</Text>
-                <Text style={styles.textCard}> Defesa: {item.defesa}</Text>
-                <Text style={styles.textCardDescription}>
-                  {item.descrição}
-                </Text>
-              </View>
-            </View>
-            <View style={{alignItems:'center', paddingBottom: 16}}>
-              <Button
-                buttonHeight={28}
-                buttonWidth={195}
-                text="Adicionar"
-                onPress={() => AdicionarHeroi(item.id)}
+              <View key={item.id} style={styles.div}>
+                <Image
+                  source={{ uri: item.img }}
+                  style={{ width: 100, height: 150 }}
                 />
-            </View>
+                <View style={styles.infoCard}>
+                  <Text style={[styles.textCard, { marginTop: 8 }]}>
+                    {item.nome}
+                  </Text>
+                  <Text style={styles.textCard}> Força: {item.forca}</Text>
+                  <Text style={styles.textCard}> Defesa: {item.defesa}</Text>
+                  <Text style={styles.textCardDescription}>
+                    {item.descrição}
+                  </Text>
+                </View>
+              </View>
+              <View style={{ alignItems: "center", paddingBottom: 16 }}>
+                <Button
+                  buttonHeight={28}
+                  buttonWidth={195}
+                  text="S u i t   u p !"
+                  onPress={() => AdicionarHeroi(item.id)}
+                />
+              </View>
             </>
           )}
         />

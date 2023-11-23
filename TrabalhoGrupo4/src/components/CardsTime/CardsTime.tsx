@@ -24,13 +24,21 @@ const CardsTime = () => {
     const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
-      const responseListaHerois = await api.get("/teamHerois", {
-        params: { idUsuario: idUsuario },
-      });
-      setListaHeroisTime(responseListaHerois.data[0].herois);
-      setListaHerois(responseListaHerois.data[0].herois);
+      api
+        .get("/teamHerois", {
+          params: { idUsuario: idUsuario },
+        })
+        .then((response) => {
+          setListaHeroisTime(response.data[0].herois);
+          setListaHerois(response.data[0].herois);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
-    setIsLoading(false);
   };
 
   const ExcluirHeroi = async (idHeroi: number) => {
@@ -81,25 +89,30 @@ const CardsTime = () => {
       {isLoading ? (
         <View>
           <Text style={styles.textCard}>CARREGANDO...</Text>
-          <Image style={{ maxWidth: "100%", maxHeight: '80%' }} source={superGif} />
+          <Image
+            style={{ maxWidth: "100%", maxHeight: "80%" }}
+            source={superGif}
+          />
         </View>
       ) : listaHeroisTime.length > 0 ? (
-        <View style= {styles.containerCards} >
-            {listaHeroisTime.map((item) => (
-                <View key={item.id} style={styles.card}>
-                <Image
-                    source={{uri: item.img}}
-                    style={{width: 100, height: 150}} />
-                <Text style={styles.textCard}>{item.nome}</Text>
-                <Button
-                  buttonHeight={22}
-                  buttonWidth={100}
-                  text="Excluir"
-                  onPress={() => ExcluirHeroi(item.id)}
-                />
-                </View>
-            ))}
+        <View style={styles.containerCards}>
+          {listaHeroisTime.map((item) => (
+            <View key={item.id} style={styles.card}>
+              <Image
+                source={{ uri: item.img }}
+                style={{ width: 100, height: 150 }}
+              />
+              <Text style={styles.textCard}>{item.nome}</Text>
+              <Button
+                buttonHeight={22}
+                buttonWidth={100}
+                text="Excluir"
+                onPress={() => ExcluirHeroi(item.id)}
+              />
+            </View>
+          ))}
         </View>
+      ) : (
         // <FlatList
         //   style={styles.cardCarrosel}
         //   numColumns={2}
@@ -121,8 +134,7 @@ const CardsTime = () => {
         //     </View>
         //   )}
         // />
-      ) : (
-        <View style={{width:'100%', backgroundColor:colors.redBackground}}>
+        <View style={{ width: "100%", backgroundColor: colors.redBackground }}>
           <Text style={styles.textCardNotFound}>
             Nenhum herói convocado para seu time!
           </Text>
