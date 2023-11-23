@@ -40,6 +40,7 @@ const CardHerois = () => {
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
       };
+      console.log(listaHeroisTime.length)
 
       let heroiEncontrado = false;
 
@@ -51,8 +52,12 @@ const CardHerois = () => {
       });
 
       if (heroiEncontrado === false) {
-        alert("Herói adicionado com sucesso!");
-        await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+        if (listaHeroisTime.length >= 5) {
+          alert("Você só pode adicionar até cinco heróis no seu time")
+        } else{
+          alert("Herói adicionado com sucesso!");
+          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+        }
       }
     } else {
       console.log("Nenhum valor encontrado para @user_id");
