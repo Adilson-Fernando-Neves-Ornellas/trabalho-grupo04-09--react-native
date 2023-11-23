@@ -95,7 +95,7 @@ const CardHerois = () => {
       {isLoading ? (
         <View>
           <Text style={styles.textCard}> CARREGANDO...</Text>
-          <Image style={{ maxWidth: "100%" }} source={superGif} />
+          <Image style={{ maxWidth: "100%", maxHeight: '75%' }} source={superGif} />
         </View>
       ) : (
         <FlatList

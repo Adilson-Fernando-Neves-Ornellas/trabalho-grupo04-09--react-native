@@ -81,7 +81,7 @@ const CardsTime = () => {
       {isLoading ? (
         <View>
           <Text style={styles.textCard}>CARREGANDO...</Text>
-          <Image style={{ maxWidth: "100%" }} source={superGif} />
+          <Image style={{ maxWidth: "100%", maxHeight: '80%' }} source={superGif} />
         </View>
       ) : listaHeroisTime.length > 0 ? (
         <FlatList
