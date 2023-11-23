@@ -31,6 +31,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 5,
   },
+  textLimit:{
+    color: 'white',
+    fontSize: 16,
+    fontFamily: fonts.texto,
+    width: "100%",
+    position:'absolute',
+    left:295
+
+  }
 });
 
 export default styles;
