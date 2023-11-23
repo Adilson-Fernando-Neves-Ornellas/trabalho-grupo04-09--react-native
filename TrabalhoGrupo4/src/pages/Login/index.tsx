@@ -56,7 +56,7 @@ const Login = () => {
           <TouchableOpacity onPress={() => {navigation.navigate('about' as never)}}>
             <Image
               source={LogoTeamHero}
-              style={[styles.logo, { marginTop: 10, marginBottom: 50 }]}
+              style={[styles.logo]}
             />
           </TouchableOpacity>
           <InputList

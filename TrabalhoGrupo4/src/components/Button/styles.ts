@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
         display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 16
+        borderRadius: 16,
       },
       ios:{
         backgroundColor: colors.bluePrimary,
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         width: '100%',
+        bottom: 5
       },
       ios:{
         color: colors.yellowPrimary,

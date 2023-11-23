@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: "column",
         alignContent: "center",
-        
       },
       ios:{
         flex: 1,
@@ -40,11 +39,9 @@ const styles = StyleSheet.create({
         
       },
       ios:{
-        flex: 1,
         width: 300,
         height: 150,
         marginTop: 75,
-        
       },
       default:{
         width: 300,
@@ -58,7 +55,6 @@ const styles = StyleSheet.create({
   signupText: {
     ...Platform.select({
       android:{
-        
         color: colors.yellowPrimary,
         marginTop: 10,
         fontFamily: fonts.texto,
