@@ -17,7 +17,7 @@ interface Heroi {
 }
 
 const CardHerois = () => {
-  const [listaHerois, setListaHerois] = useState<Heroi[]>([]);
+  const [listaHeroisTotal, setListaHeroisTotal] = useState<Heroi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const AdicionarHeroi = async (idHeroi: number) => {
@@ -78,7 +78,7 @@ const CardHerois = () => {
   const getherois = () => {
     setTimeout(async () => {
       const response = await api.get("/herois");
-      setListaHerois(response.data);
+      setListaHeroisTotal(response.data);
       setIsLoading(false);
     }, 3000);
   };
@@ -100,7 +100,7 @@ const CardHerois = () => {
       ) : (
         <FlatList
           style={styles.cardCarrosel}
-          data={listaHerois}
+          data={listaHeroisTotal}
           renderItem={({ item }) => (
             <View key={item.id} style={styles.div}>
               <Image
