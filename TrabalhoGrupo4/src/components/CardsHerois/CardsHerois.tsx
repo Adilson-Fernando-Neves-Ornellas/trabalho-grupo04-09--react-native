@@ -52,7 +52,7 @@ const CardHerois = () => {
       });
 
       if (heroiEncontrado === false) {
-        if (listaHeroisTime.length >= 5) {
+        if (listaHeroisTime.length >= 6) {
           alert("Você só pode adicionar até cinco heróis no seu time")
         } else{
           alert("Herói adicionado com sucesso!");
