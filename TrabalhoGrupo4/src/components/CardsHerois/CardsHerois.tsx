@@ -1,8 +1,7 @@
 import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { api } from "../../api/api";
-import colors from "../../styles/theme/colors";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
@@ -114,17 +113,15 @@ const CardHerois = () => {
                 </Text>
                 <Text style={styles.textCard}> Força: {item.forca}</Text>
                 <Text style={styles.textCard}> Defesa: {item.defesa}</Text>
+                <Text style={styles.textCardDescription}>
+                  {item.descrição}
+                </Text>
                 <Button
-                  buttonHeight={22}
-                  buttonWidth={80}
+                  buttonHeight={28}
+                  buttonWidth={195}
                   text="Adicionar"
                   onPress={() => AdicionarHeroi(item.id)}
                 />
-              </View>
-              <View style={{justifyContent: 'center', alignItems: 'center', width: '40%'}}>
-                <Text style={styles.textCard}>
-                  {item.descrição}
-                </Text>
               </View>
             </View>
           )}

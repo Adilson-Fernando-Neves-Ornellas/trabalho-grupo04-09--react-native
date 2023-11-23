@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   cardCarrosel: {
     padding: 10,
-    height: "80%",
+    height: "85%",
   },
   div: {
     marginBottom: 15,
@@ -19,9 +19,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   textCard: {
-    alignSelf: "center",
     color: colors.yellowPrimary,
-    fontSize: 16,
+    fontSize: 17,
     fontFamily: fonts.texto,
     width: "100%",
     textAlign: "center",
@@ -31,14 +30,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 5,
   },
-  textLimit:{
-    color: 'white',
-    fontSize: 16,
+  textCardDescription:{
+    color: colors.yellowPrimary,
+    fontSize: 14,
     fontFamily: fonts.texto,
     width: "100%",
-    position:'absolute',
-    left:295
-
+    maxWidth: 195,
+    textAlign: "center"
   }
 });
 
