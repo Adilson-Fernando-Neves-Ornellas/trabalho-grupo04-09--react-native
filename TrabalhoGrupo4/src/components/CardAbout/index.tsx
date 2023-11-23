@@ -1,10 +1,8 @@
 import {
   TouchableOpacity,
   Text,
-  View,
   ViewProps,
-  Linking,
-  Image,
+  Linking
 } from "react-native";
 import { styles } from "./styles";
 import { FontAwesome } from "@expo/vector-icons";

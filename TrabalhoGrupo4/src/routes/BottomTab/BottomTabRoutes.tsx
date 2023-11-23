@@ -1,11 +1,9 @@
-import { Image, Text } from "react-native";
+import { Image } from "react-native";
 import Home from "../../pages/Home";
 import Time from "../../pages/Time";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TimeIcon from "../../assets/Images/teamButton.png";
 import HomeIcon from "../../assets/Images/heroesButton.png";
-import AboutImg from "../../assets/Images/aboutUsButton.png";
-import About from "../../pages/About";
 import { AssembleProvider } from "../../Context/AssembleContext";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();

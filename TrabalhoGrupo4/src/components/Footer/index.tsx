@@ -1,4 +1,4 @@
-import { View, Image, ViewProps } from "react-native";
+import { View, Image } from "react-native";
 import ImageFooter from "../../assets/Images/HeroesFooter.jpg";
 import { styles } from "./styles";
 

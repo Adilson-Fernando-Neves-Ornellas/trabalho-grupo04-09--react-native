@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Text, View, Modal, Image, TouchableOpacity } from "react-native";
+import { View, Modal, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import AssembleImage from "../../assets/Images/assembleGif.gif";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../styles/theme/colors";
-import { AssembleContext } from "../../Context/AssembleContext";
 import { CardAssemble } from "../CardAssemble";
 
 interface ModalProps {
@@ -16,8 +14,6 @@ export const ModalAssemble = ({
   isModalVisible,
   setIsModalVisible,
 }: ModalProps) => {
-  const [isLoading, SetIsLoading] = useState<boolean>(true);
-  const { listaHerois } = useContext(AssembleContext);
 
   return (
     <Modal

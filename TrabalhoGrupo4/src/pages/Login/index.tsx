@@ -1,11 +1,4 @@
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  StatusBar,
-  ScrollView,
-  Image,
-} from "react-native";
+import { TouchableOpacity, View, Text, StatusBar, ScrollView, Image } from "react-native";
 import React, { useState, useContext } from "react";
 import LogoTeamHero from "../../assets/Images/TeamHeroesLogo.png";
 import { useNavigation } from "@react-navigation/native";

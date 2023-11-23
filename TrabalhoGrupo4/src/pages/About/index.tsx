@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  StatusBar
-} from "react-native";
+import { View, Text, Image, ScrollView, StatusBar} from "react-native";
 import React from "react";
 import styles from "./styles";
 import { Footer } from "../../components/Footer";
@@ -58,7 +52,7 @@ const About = () => {
               nome="Taynara Aguiar"
               urlGit="https://github.com/tayaguiar"
             />
-            <CardAbout image={prof} nome="Douglas Maia" urlGit="" />
+            <CardAbout image={prof} nome="Douglas Maia" urlGit="https://github.com/DouglasMaiaa" />
           </View>
           <Button
               text="Voltar"

@@ -1,12 +1,4 @@
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  ScrollView,
-  Alert,
-  StatusBar,
-} from "react-native";
+import { TouchableOpacity, View, Text, Image, ScrollView, StatusBar } from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
 import { Button } from "../../components/Button";
@@ -33,7 +25,7 @@ const Cadastro = () => {
     ) {
       limpar();
       try {
-        const response = await api.post("/usuarios", { nome, email, senha });
+        await api.post("/usuarios", { nome, email, senha });
         alert("cadastro efetuado com sucesso, retornando a pagina de login");
       } catch (error) {
         navigation.navigate("login" as never);

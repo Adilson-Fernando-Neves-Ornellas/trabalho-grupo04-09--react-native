@@ -1,12 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-import {
-  TouchableOpacity,
-  Text,
-  TouchableOpacityProps,
-  Image,
-  View,
-} from "react-native";
+import {TouchableOpacity, Text, TouchableOpacityProps, Image, View } from "react-native";
 import logoFundo from "../../assets/Images/LogoTeamHeroesSemTexto.png";
 import { styles } from "./styles";
 

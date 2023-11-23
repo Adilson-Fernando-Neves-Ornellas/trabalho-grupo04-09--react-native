@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import styles from "./styles";
 import Header from "../../components/header/header";
 import CardsTime from "../../components/CardsTime/CardsTime";

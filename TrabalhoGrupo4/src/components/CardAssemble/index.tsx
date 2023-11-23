@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
+import { useContext} from "react"
 import { AssembleContext } from "../../Context/AssembleContext"
-import { FlatList, Image, Text, View } from "react-native"
+import { Image, Text, View } from "react-native"
 import { styles } from './styles'
 
 
