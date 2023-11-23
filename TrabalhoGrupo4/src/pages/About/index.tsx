@@ -1,14 +1,11 @@
 import {
-  TouchableOpacity,
   View,
   Text,
   Image,
   ScrollView,
-  Alert,
-  StatusBar,
-  Touchable,
+  StatusBar
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles";
 import { Footer } from "../../components/Footer";
 import LogoTeamHero from "../../assets/Images/aboutUsButton.png";
@@ -16,7 +13,8 @@ import { CardAbout } from "../../components/CardAbout";
 import prof from "../../assets/Images/prof.png";
 import Header from "../../components/header/header";
 import { useNavigation } from "@react-navigation/native";
-import fonts from "../../styles/theme/fonts";
+import { Button } from "../../components/Button";
+
 
 const About = () => {
   const navigation = useNavigation();
@@ -62,13 +60,15 @@ const About = () => {
             />
             <CardAbout image={prof} nome="Douglas Maia" urlGit="" />
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <Text style={styles.buttonVoltar}>Voltar</Text>
-          </TouchableOpacity>
+          <Button
+              text="Voltar"
+              buttonHeight={40}
+              buttonWidth={100}
+              textFontSize={16}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
         </View>
       </ScrollView>
       <Footer />
