@@ -11,35 +11,19 @@ const styles = StyleSheet.create({
     rowGap: 5,
     paddingTop: 0,
     alignItems: "center",
-    
   },
   text: {
     textAlign: "center",
     fontSize: 18,
     fontFamily: fonts.texto,
     color: colors.yellowPrimary,
-    width: "100%",
-    
+    width: "100%", 
   },
   logo: {
     paddingTop: 75,
     width: 300,
     height: 150,
-    
-  },
-  buttonVoltar: {
-    textAlign: "center",
-    bottom:6,
-    fontSize: 18,
-    fontFamily: fonts.texto,
-    color: colors.yellowPrimary,
-    width: "100%",
-    borderStyle:'solid',
-    borderRadius:10,
-    borderStartWidth:40,
-    borderBottomWidth:2,
-    backgroundColor:colors.bluePrimary,
-  },
+  }
 });
 
 export default styles;
