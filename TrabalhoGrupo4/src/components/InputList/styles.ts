@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: colors.blackPrimary,
     color: colors.yellowInput,
-    fontFamily: fonts.texto,
+    fontFamily: fonts.logo,
     width: 282,
+    fontSize:16,
+    textAlign:'left'
   },
 });

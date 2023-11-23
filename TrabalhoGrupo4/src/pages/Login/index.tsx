@@ -1,4 +1,12 @@
-import { TouchableOpacity, View, Text, StatusBar, ScrollView, Image } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StatusBar,
+  ScrollView,
+  Image,
+  Modal,
+} from "react-native";
 import React, { useState, useContext } from "react";
 import LogoTeamHero from "../../assets/Images/TeamHeroesLogo.png";
 import { useNavigation } from "@react-navigation/native";
@@ -9,16 +17,19 @@ import { Button } from "../../components/Button";
 import { api } from "../../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthContext } from "../../Context/Context";
+import fonts from "../../styles/theme/fonts";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [senha, setSenha] = useState<string>("");
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const { setLogado, setNome } = useContext(AuthContext);
 
   const navigation = useNavigation();
 
   const Logar = async (e: any) => {
     e.preventDefault();
+    timeoutModal();
     if (email !== "" && senha !== "") {
       const response = await api.get("/usuarios", {
         params: { email: email, senha: senha },
@@ -35,7 +46,7 @@ const Login = () => {
           JSON.stringify(response.data[0].nome)
         );
         setLogado(true);
-        setNome(response.data[0].nome)
+        setNome(response.data[0].nome);
         navigation.navigate("home" as never);
       }
     } else {
@@ -48,21 +59,53 @@ const Login = () => {
     setEmail("");
     setSenha("");
   };
+  const handleModalVisible = () => {
+    setIsModalVisible(false);
+  };
+  const timeoutModal = () => {
+    setIsModalVisible(true);
+    setTimeout(handleModalVisible, 3000);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar />
+      <Modal
+        animationType={"slide"}
+        transparent={true}
+        visible={isModalVisible}
+      >
+        <View style={styles.modal}>
+          <Text style={{ fontFamily: fonts.texto }}>
+            Verificando Informações...
+          </Text>
+        </View>
+      </Modal>
       <ScrollView>
         <View style={styles.viewContent}>
-          <TouchableOpacity onPress={() => {navigation.navigate('about' as never)}}>
-            <Image
-              source={LogoTeamHero}
-              style={[styles.logo]}
-            />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("about" as never);
+            }}
+          >
+            <Image source={LogoTeamHero} style={[styles.logo]} />
           </TouchableOpacity>
           <InputList
             inputs={[
-              { id: 1, placeholder: "email", value: email, setValue: setEmail },
-              { id: 2, placeholder: "senha", value: senha, setValue: setSenha },
+              {
+                id: 1,
+                placeholder: "email",
+                value: email,
+                setValue: setEmail,
+                secureTextEntry: false,
+              },
+              {
+                id: 2,
+                placeholder: "senha",
+                value: senha,
+                setValue: setSenha,
+                secureTextEntry: true,
+              },
             ]}
             limpar={limpar}
           />

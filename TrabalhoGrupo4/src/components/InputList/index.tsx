@@ -9,8 +9,8 @@ interface InputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   id: number;
+  secureTextEntry?: boolean;
 }
-
 interface InputListProps extends ViewProps {
   inputs: InputProps[];
   limpar: () => void;
@@ -22,6 +22,7 @@ export const InputList = ({ inputs, ...rest }: InputListProps) => {
       {inputs.map((input) => {
         return (
           <TextInput
+            secureTextEntry={input.secureTextEntry}
             key={input.id}
             style={styles.input}
             placeholder={input.placeholder}

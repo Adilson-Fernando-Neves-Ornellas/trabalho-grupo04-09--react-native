@@ -1,4 +1,11 @@
-import { TouchableOpacity, View, Text, Image, ScrollView, StatusBar } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  StatusBar,
+} from "react-native";
 import React, { useState } from "react";
 import styles from "./styles";
 import { Button } from "../../components/Button";
@@ -73,12 +80,14 @@ const Cadastro = () => {
                 value: senha,
                 setValue: setSenha,
                 id: 3,
+                secureTextEntry:true
               },
               {
                 placeholder: "confirmar senha",
                 value: confirmaSenha,
                 setValue: setConfirmaSenha,
                 id: 4,
+                secureTextEntry:true
               },
             ]}
             limpar={limpar}
