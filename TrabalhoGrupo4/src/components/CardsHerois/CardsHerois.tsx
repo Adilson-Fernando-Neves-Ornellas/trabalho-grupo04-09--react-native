@@ -40,7 +40,7 @@ const CardHerois = () => {
         idUsuario: idUsuario,
         herois: [...listaHeroisTime, heroi],
       };
-      console.log(listaHeroisTime.length)
+      console.log(listaHeroisTime)
 
       let heroiEncontrado = false;
 

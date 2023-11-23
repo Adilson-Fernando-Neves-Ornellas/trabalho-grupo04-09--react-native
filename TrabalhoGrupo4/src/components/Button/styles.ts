@@ -7,21 +7,18 @@ export const styles = StyleSheet.create({
     ...Platform.select({
       android:{
         backgroundColor: colors.bluePrimary,
-        display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 16,
       },
       ios:{
         backgroundColor: colors.bluePrimary,
-        display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 16
       },
       default: {
         backgroundColor: colors.bluePrimary,
-        display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 16

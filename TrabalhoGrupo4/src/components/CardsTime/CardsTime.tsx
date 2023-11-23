@@ -86,8 +86,9 @@ const CardsTime = () => {
       ) : listaHeroisTime.length > 0 ? (
         <FlatList
           style={styles.cardCarrosel}
-          numColumns={3}
+          numColumns={2}
           data={listaHeroisTime}
+          contentContainerStyle={{flexDirection: 'column', alignItems: 'center'}}
           renderItem={({ item }) => (
             <View key={item.id} style={styles.div}>
               <Image
