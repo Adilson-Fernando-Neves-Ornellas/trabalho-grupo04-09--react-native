@@ -1,6 +1,6 @@
 ## Objetivo do trabalho foi a criação de um aplicativo em React Native 
 
-Integrantes do trabalho:
+Integrantes:
 - Adilson Fernando Neves Ornellas
 - Raynan Avila Titoneli De Castro
 - Luan Cordoeira Terra Da Silva 
