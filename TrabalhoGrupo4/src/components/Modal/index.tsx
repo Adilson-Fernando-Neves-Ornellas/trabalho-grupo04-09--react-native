@@ -31,7 +31,7 @@ export const ModalAssemble = ({
         style={styles.modal}
       >
         <TouchableOpacity activeOpacity={1} style={styles.containerModal}>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={{ flexDirection: "column" }}
             onPress={() => {
               setIsModalVisible(false);
@@ -43,7 +43,7 @@ export const ModalAssemble = ({
               color={colors.yellowPrimary}
               style={{ marginLeft: "90%" }}
             />
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           <CardAssemble />
           <Image style={styles.image} source={AssembleImage} />
         </TouchableOpacity>

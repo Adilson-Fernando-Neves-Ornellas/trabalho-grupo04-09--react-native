@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.redBackground,
   },
   containerModal: {
-    
+    paddingTop:10,
     backgroundColor: colors.blackPrimary,
     borderRadius: 10,
     alignItems: "center",
