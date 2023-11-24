@@ -17,5 +17,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.texto,
     width: "100%",
+    textAlign:'center',
   },
 });

@@ -18,7 +18,7 @@ export const CardAssemble = () => {
             style={{ width: "80%", height: 120, resizeMode: "cover" }}
           />
           <View>
-            <Text style={[styles.textCard, { marginTop: 8 }]}>{item.nome}</Text>
+            <Text style={[styles.textCard]}>{item.nome}</Text>
           </View>
         </View>
       )}
