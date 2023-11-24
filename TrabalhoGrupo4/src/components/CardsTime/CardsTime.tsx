@@ -95,22 +95,28 @@ const CardsTime = () => {
           />
         </View>
       ) : listaHeroisTime.length > 0 ? (
-          <FlatList
-            data={listaHeroisTime}
-            contentContainerStyle={{paddingTop:20 }}
-            numColumns={3}
-            renderItem={({ item }) => (
-              <View key={item.id} style={styles.card}>
-                <Image
-                  source={{ uri: item.img }}
-                  style={{ width: "80%", height: 120, resizeMode: "cover" }}
+        <FlatList
+          data={listaHeroisTime}
+          contentContainerStyle={{ paddingTop: 20 }}
+          numColumns={3}
+          renderItem={({ item }) => (
+            <View key={item.id} style={styles.card}>
+              <Image
+                source={{ uri: item.img }}
+                style={{ width: "80%", height: 120, resizeMode: "cover" }}
+              />
+              <View>
+                <Text style={[styles.textCard]}>{item.nome}</Text>
+                <Button
+                  buttonHeight={22}
+                  buttonWidth={100}
+                  text="Excluir"
+                  onPress={() => ExcluirHeroi(item.id)}
                 />
-                <View>
-                  <Text style={[styles.textCard, { marginTop: 8 }]}>{item.nome}</Text>
-                </View>
               </View>
-        )}
-    />
+            </View>
+          )}
+        />
       ) : (
         <View style={{ width: "100%", backgroundColor: colors.redBackground }}>
           <Text style={styles.textCardNotFound}>
