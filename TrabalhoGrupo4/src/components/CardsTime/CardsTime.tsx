@@ -95,45 +95,22 @@ const CardsTime = () => {
           />
         </View>
       ) : listaHeroisTime.length > 0 ? (
-        <View style={styles.containerCards}>
-          {listaHeroisTime.map((item) => (
-            <View key={item.id} style={styles.card}>
-              <Image
-                source={{ uri: item.img }}
-                style={{ width: 100, height: 150 }}
-              />
-              <Text style={styles.textCard}>{item.nome}</Text>
-              <Button
-                buttonHeight={22}
-                buttonWidth={100}
-                text="Excluir"
-                onPress={() => ExcluirHeroi(item.id)}
-              />
-            </View>
-          ))}
-        </View>
+          <FlatList
+            data={listaHeroisTime}
+            contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap", rowGap:10, padding:5 }}
+            renderItem={({ item }) => (
+              <View key={item.id} style={styles.card}>
+                <Image
+                  source={{ uri: item.img }}
+                  style={{ width: "80%", height: 120, resizeMode: "cover" }}
+                />
+                <View>
+                  <Text style={[styles.textCard, { marginTop: 8 }]}>{item.nome}</Text>
+                </View>
+              </View>
+        )}
+    />
       ) : (
-        // <FlatList
-        //   style={styles.cardCarrosel}
-        //   numColumns={2}
-        //   data={listaHeroisTime}
-        //   contentContainerStyle={{flexDirection: 'column', alignItems: 'center'}}
-        //   renderItem={({ item }) => (
-        //     <View key={item.id} style={styles.div}>
-        //       <Image
-        //         source={{ uri: item.img }}
-        //         style={{ width: 100, height: 150 }}
-        //       />
-        //       <Text style={styles.textCard}>{item.nome}</Text>
-        //       <Button
-        //         buttonHeight={22}
-        //         buttonWidth={100}
-        //         text="Excluir"
-        //         onPress={() => ExcluirHeroi(item.id)}
-        //       />
-        //     </View>
-        //   )}
-        // />
         <View style={{ width: "100%", backgroundColor: colors.redBackground }}>
           <Text style={styles.textCardNotFound}>
             Nenhum herói convocado para seu time!

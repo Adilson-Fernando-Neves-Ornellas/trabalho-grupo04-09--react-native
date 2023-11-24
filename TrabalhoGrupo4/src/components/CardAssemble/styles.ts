@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-around",
-    marginLeft: 7,
+    marginLeft: 3,
   },
   textCard: {
     color: colors.yellowPrimary,

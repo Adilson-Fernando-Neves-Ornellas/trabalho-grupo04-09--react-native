@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     width: 110,
     height: 200,
     alignItems: "center",
+    marginLeft: 8
   },
   textCard: {
     justifyContent: "center",
