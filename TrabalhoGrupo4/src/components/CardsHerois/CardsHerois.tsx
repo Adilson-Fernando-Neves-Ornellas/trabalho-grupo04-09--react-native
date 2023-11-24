@@ -25,44 +25,43 @@ const CardHerois = () => {
     const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
+      try {
+        const timeHerois = await api.get("/teamHerois", {
+          params: { idUsuario: idUsuario },
+        });
 
-      const timeHerois = await api.get("/teamHerois", {
-        params: { idUsuario: idUsuario },
-      });
+        const listaHeroisTime = timeHerois.data[0].herois;
+        const idteamHerois = timeHerois.data[0].id;
 
-      const listaHeroisTime = timeHerois.data[0].herois;
-      const idteamHerois = timeHerois.data[0].id;
+        const heroiResponse = await api.get(`/herois/${idHeroi}`);
+        const heroi = heroiResponse.data;
 
-      const heroiResponse = await api.get(`/herois/${idHeroi}`);
-      const heroi = heroiResponse.data;
+        const modeloAPi = {
+          id: idteamHerois,
+          idUsuario: idUsuario,
+          herois: [...listaHeroisTime, heroi],
+        };
 
-      const modeloAPi = {
-        id: idteamHerois,
-        idUsuario: idUsuario,
-        herois: [...listaHeroisTime, heroi],
-      };
+        let heroiEncontrado = false;
 
-      let heroiEncontrado = false;
+        listaHeroisTime.forEach((heroi: Heroi) => {
+          if (heroi.id === idHeroi) {
+            alert("Esse herói já foi convocado para seu time!");
+            heroiEncontrado = true;
+          }
+        });
 
-      listaHeroisTime.forEach((heroi: Heroi) => {
-        if (heroi.id === idHeroi) {
-          alert("Esse herói já foi convocado para seu time!");
-          heroiEncontrado = true;
-        }
-      });
-
-      if (heroiEncontrado === false) {
-        if (listaHeroisTime.length >= 6) {
-          alert("Limite máximo do time atingido (6)!");
-        } else {
-          alert("Herói adicionado com sucesso!");
-          try {
-            await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
-          } catch (error) {
-            
+        if (heroiEncontrado === false) {
+          if (listaHeroisTime.length >= 6) {
+            alert("Limite máximo do time atingido (6)!");
+          } else {
+            alert("Herói adicionado com sucesso!");
+            try {
+              await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
+            } catch (error) {}
           }
         }
-      }
+      } catch (error) {}
     } else {
       console.log("Nenhum valor encontrado para @user_id");
     }

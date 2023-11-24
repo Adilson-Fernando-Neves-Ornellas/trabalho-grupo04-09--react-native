@@ -72,10 +72,10 @@ export const ModalAssemble = ({
           <CardAssemble />
           <Image style={styles.image} source={AssembleImage} />
         </TouchableOpacity>
-        <Text style={{ fontFamily: fonts.texto, color: colors.yellowInput }}>
+        <Text style={{textAlign:'center', width:'100%', fontFamily: fonts.texto, color: colors.yellowInput }}>
           Força da equipe: {forcaTotal}
         </Text>
-        <Text style={{ fontFamily: fonts.texto, color: colors.yellowInput }}>
+        <Text style={{textAlign:'center', width:'100%', fontFamily: fonts.texto, color: colors.yellowInput }}>
           Defesa da equipe: {defesaTotal}
         </Text>
       </TouchableOpacity>
