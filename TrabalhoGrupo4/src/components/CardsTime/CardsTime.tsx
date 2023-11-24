@@ -97,7 +97,6 @@ const CardsTime = () => {
       ) : listaHeroisTime.length > 0 ? (
           <FlatList
             data={listaHeroisTime}
-            // contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap", rowGap:10, padding:5 }}
             contentContainerStyle={{paddingTop:20 }}
             numColumns={3}
             renderItem={({ item }) => (
