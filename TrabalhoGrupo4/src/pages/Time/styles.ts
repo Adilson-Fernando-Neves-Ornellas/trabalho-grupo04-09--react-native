@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: colors.yellowPrimary,
     fontFamily: fonts.texto,
-    marginTop: 20
+    marginTop: 20,
+    width:'100%'
   },
   buttonAssemble:{
     alignItems:'center'

@@ -14,7 +14,6 @@ export const ModalAssemble = ({
   isModalVisible,
   setIsModalVisible,
 }: ModalProps) => {
-
   return (
     <Modal
       animationType="slide"
@@ -24,21 +23,31 @@ export const ModalAssemble = ({
         setIsModalVisible(false);
       }}
     >
-        <View style={styles.modal}>
-            <View style={styles.containerModal}>
-            <TouchableOpacity
-                style={{flexDirection: 'column'}}
-                onPress={() => {
-                setIsModalVisible(false);
-              }}
-              >
-                <AntDesign name="close" size={32} color={colors.yellowPrimary} style={{marginLeft: '90%'}} />
-            </TouchableOpacity>
-            <CardAssemble/>
-            <Image style={styles.image} source={AssembleImage} />
-            </View>
-        </View>
-      
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={() => {
+          setIsModalVisible(false);
+        }}
+        style={styles.modal}
+      >
+        <TouchableOpacity activeOpacity={1} style={styles.containerModal}>
+          {/* <TouchableOpacity
+            style={{ flexDirection: "column" }}
+            onPress={() => {
+              setIsModalVisible(false);
+            }}
+          >
+            <AntDesign
+              name="close"
+              size={24}
+              color={colors.yellowPrimary}
+              style={{ marginLeft: "90%" }}
+            />
+          </TouchableOpacity> */}
+          <CardAssemble />
+          <Image style={styles.image} source={AssembleImage} />
+        </TouchableOpacity>
+      </TouchableOpacity>
     </Modal>
   );
 };

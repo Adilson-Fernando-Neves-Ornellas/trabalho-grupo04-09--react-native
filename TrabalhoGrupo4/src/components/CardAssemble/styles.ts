@@ -1,34 +1,29 @@
-import { StyleSheet } from "react-native"
-import colors from "../../styles/theme/colors"
-import fonts from "../../styles/theme/fonts"
+import { StyleSheet } from "react-native";
+import colors from "../../styles/theme/colors";
+import fonts from "../../styles/theme/fonts";
 
 export const styles = StyleSheet.create({
-    containerCards: {
-        height: '30%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        rowGap: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 10
-    },
-    cardCarrossel: {
-        padding: 10,
-    },
-    card: {
-        width: 110,
-        height: 200,
-        alignItems: 'center'
-    },
-    textCard: {
-        justifyContent: 'center',
-        textAlign: 'center',
-        color: colors.yellowPrimary,
-        fontSize: 16,
-        fontFamily: fonts.texto    
-    },
-    flat: {
-        flex: 1,
-        padding: 20,
-    }
-})
+  containerCards: {
+    height: "30%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    rowGap: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+  },
+  card: {
+    width: 110,
+    height: 180,
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    marginLeft: 7,
+  },
+  textCard: {
+    color: colors.yellowPrimary,
+    fontSize: 16,
+    fontFamily: fonts.texto,
+    width: "100%",
+  },
+});
