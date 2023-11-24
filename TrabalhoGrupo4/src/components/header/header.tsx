@@ -1,7 +1,7 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import TeamHeroesLogo from "../../assets/Images/TeamHeroesLogo.png";
-import { AuthContext } from "../../Context/Context";
+import { AuthContext } from "../../Context/AuthContext";
 import flyhero from "../../assets/Images/flyhero.png";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";

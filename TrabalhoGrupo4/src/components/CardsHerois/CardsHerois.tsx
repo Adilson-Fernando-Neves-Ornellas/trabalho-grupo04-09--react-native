@@ -78,7 +78,9 @@ const CardHerois = () => {
       );
 
       if (conferindoSeExisteTimeParaEsseIdUsuario.data[0] == undefined) {
-        await api.post("/teamHerois", { idUsuario: idUsuario, herois: [] });
+        try {
+          await api.post("/teamHerois", { idUsuario: idUsuario, herois: [] });
+        } catch (error) {}
       }
     }
   };

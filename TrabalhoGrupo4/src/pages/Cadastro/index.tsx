@@ -32,6 +32,9 @@ const Cadastro = () => {
     ) {
       limpar();
       try {
+
+        //REQUISIÇÃO POST
+        
         await api.post("/usuarios", { nome, email, senha });
         alert("cadastro efetuado com sucesso, retornando a pagina de login");
       } catch (error) {
@@ -80,14 +83,14 @@ const Cadastro = () => {
                 value: senha,
                 setValue: setSenha,
                 id: 3,
-                secureTextEntry:true
+                secureTextEntry: true,
               },
               {
                 placeholder: "confirmar senha",
                 value: confirmaSenha,
                 setValue: setConfirmaSenha,
                 id: 4,
-                secureTextEntry:true
+                secureTextEntry: true,
               },
             ]}
             limpar={limpar}

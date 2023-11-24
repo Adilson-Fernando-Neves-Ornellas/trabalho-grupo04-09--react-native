@@ -1,6 +1,6 @@
 
 import Routes from './src/routes/Routes';
-import { AuthProvider } from './src/Context/Context';
+import { AuthProvider } from './src/Context/AuthContext';
 import {useFonts, Oswald_600SemiBold } from '@expo-google-fonts/oswald';
 import {Bangers_400Regular} from '@expo-google-fonts/bangers'
 

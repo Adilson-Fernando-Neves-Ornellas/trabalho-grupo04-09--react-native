@@ -16,27 +16,34 @@ import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
 import { api } from "../../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthContext } from "../../Context/Context";
+import { AuthContext } from "../../Context/AuthContext";
 import fonts from "../../styles/theme/fonts";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const { setLogado, setNome } = useContext(AuthContext);
 
+  const { setLogado, setNome } = useContext(AuthContext);
+  
   const navigation = useNavigation();
 
   const Logar = async (e: any) => {
     e.preventDefault();
     timeoutModal();
     if (email !== "" && senha !== "") {
+
+      // REQUISIÇÃO GET
+
       const response = await api.get("/usuarios", {
         params: { email: email, senha: senha },
       });
       if (response.data[0] === undefined) {
         alert("Usuário ou Senha inválido!");
       } else {
+
+        // ASYNC STORAGE SET
+
         await AsyncStorage.setItem(
           "@user_id",
           JSON.stringify(response.data[0].id)
@@ -45,6 +52,9 @@ const Login = () => {
           "@user_nome",
           JSON.stringify(response.data[0].nome)
         );
+
+        //CONTEXT SET
+        
         setLogado(true);
         setNome(response.data[0].nome);
         navigation.navigate("home" as never);
