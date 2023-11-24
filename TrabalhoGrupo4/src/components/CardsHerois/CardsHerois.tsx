@@ -59,7 +59,7 @@ const CardHerois = () => {
           try {
             await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
           } catch (error) {
-            
+
           }
         }
       }

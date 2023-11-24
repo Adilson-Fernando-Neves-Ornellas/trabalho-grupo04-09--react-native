@@ -1,6 +1,10 @@
+/*
+ * Descrição: Este arquivo contém a implementação do componente CardsTime.
+ */
+
+import React, { useState, useContext } from "react";
 import { FlatList, View, Image, Text } from "react-native";
 import styles from "./styles";
-import React, { useState, useContext } from "react";
 import { api } from "../../api/api";
 import superGif from "../../assets/Images/heroload.gif";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -9,39 +13,48 @@ import { Button } from "../Button";
 import { AssembleContext, Heroi } from "../../Context/AssembleContext";
 import colors from "../../styles/theme/colors";
 
+/**
+ * @function CardsTime
+ * Componente funcional que representa a exibição dos heróis no time do usuário.
+ * @returns {JSX.Element} - Elemento JSX representando os cards dos heróis.
+ */
 const CardsTime = () => {
   const { setListaHerois } = useContext(AssembleContext);
   const [listaHeroisTime, setListaHeroisTime] = useState<Heroi[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useFocusEffect(
     React.useCallback(() => {
-      getherois();
+      getHerois();
     }, [])
   );
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const getherois = async () => {
+  /**
+   * Função responsável por obter os heróis do usuário a partir da API.
+   */
+  const getHerois = async () => {
     const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
-      api
-        .get("/teamHerois", {
+      try {
+        const response = await api.get("/teamHerois", {
           params: { idUsuario: idUsuario },
-        })
-        .then((response) => {
-          setListaHeroisTime(response.data[0].herois);
-          setListaHerois(response.data[0].herois);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
+        setListaHeroisTime(response.data[0].herois);
+        setListaHerois(response.data[0].herois);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
-  const ExcluirHeroi = async (idHeroi: number) => {
+  /**
+   * Função responsável por excluir um herói do time do usuário.
+   * @param {number} idHeroi - ID do herói a ser excluído.
+   */
+  const excluirHeroi = async (idHeroi: number) => {
     const asyncId = await AsyncStorage.getItem("@user_id");
     if (asyncId !== null) {
       const idUsuario = JSON.parse(asyncId);
@@ -51,32 +64,30 @@ const CardsTime = () => {
       });
 
       const listaHeroisTime = timeHerois.data[0].herois;
-      const idteamHerois = timeHerois.data[0].id;
+      const idTeamHerois = timeHerois.data[0].id;
 
-      let heroiEncontrado = false;
-
-      listaHeroisTime.forEach((heroi: Heroi) => {
-        if (heroi.id === idHeroi) {
-          heroiEncontrado = true;
-        }
-      });
+      const heroiEncontrado = listaHeroisTime.some(
+        (heroi: Heroi) => heroi.id === idHeroi
+      );
 
       if (heroiEncontrado) {
         const listaTimeAtualizada = listaHeroisTime.filter(
           (heroi: Heroi) => heroi.id !== idHeroi
         );
-        const modeloAPi = {
-          id: idteamHerois,
+
+        const modeloApi = {
+          id: idTeamHerois,
           idUsuario: idUsuario,
           herois: [...listaTimeAtualizada],
         };
 
         try {
-          await api.put(`/teamHerois/${idteamHerois}`, modeloAPi);
-        } catch (error) {
-          alert("Herói excluido com sucesso!");
+          await api.put(`/teamHerois/${idTeamHerois}`, modeloApi);
+          alert("Herói excluído com sucesso!");
           setListaHerois(listaTimeAtualizada);
           setListaHeroisTime(listaTimeAtualizada);
+        } catch (error) {
+          console.log(error);
         }
       }
     } else {
@@ -111,7 +122,7 @@ const CardsTime = () => {
                   buttonHeight={22}
                   buttonWidth={100}
                   text="Excluir"
-                  onPress={() => ExcluirHeroi(item.id)}
+                  onPress={() => excluirHeroi(item.id)}
                 />
               </View>
             </View>
