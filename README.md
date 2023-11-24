@@ -28,8 +28,11 @@ Prints de como ficou o aplicativo depois de pronto:
   
   <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaCadastro.jpg" alt="Imagem tela Cadastro" width="150"/>
   
-  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaHome.jpg" alt="Imagem tela sobre" width="150"/>
-  
-  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaSobre.jpg" alt="Imagem tela home" width="150"/>
+  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaHome.jpg" alt="Imagem tela home" width="150"/>
 
+  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaTime.jpg" alt="Imagem tela times" width="150"/>
+
+  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintModalPaginaTime.jpg" alt="Imagem tela modal da pagina times" width="150"/>
+
+  <img src="https://github.com/Adilson-Fernando-Neves-Ornellas/trabalho-grupo04-09--react-native/blob/main/PrintsTelasProntas/PrintPaginaSobre.jpg" alt="Imagem tela sobre" width="150"/>
 </div>
