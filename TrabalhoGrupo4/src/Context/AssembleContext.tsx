@@ -11,6 +11,7 @@ export interface Heroi {
   nome: string;
   descrição: string;
   img: string;
+  gif: string;
   forca: number;
   defesa: number;
 }

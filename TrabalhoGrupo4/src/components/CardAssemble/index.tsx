@@ -13,7 +13,7 @@ export const CardAssemble = () => {
       renderItem={({ item }) => (
         <View key={item.id} style={styles.card}>
           <Image
-            source={{ uri: item.img }}
+            source={{ uri: item.gif }}
             style={{ width: "80%", height: 120, resizeMode: "cover" }}
           />
           <View>
